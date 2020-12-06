@@ -95,6 +95,7 @@ body {
 .top-bar h1 {
     padding: 20px;
     color: #455E53;
+    font-weight: 600;
 }
 
 .top-bar .content {
@@ -118,26 +119,41 @@ section .container h2 {
 }
 
 /* LANDING PG */
-body section.landing {
-    background: #6B9080;
+header .landing {
+    background: #7EA091;
+    padding: 30px;
+    color: white;
 }
-section.landing {
-    margin: auto;
-    text-align: center;
+
+section#landing {
+    color: #4E6A5E;
+    display: block;
     width: 80%;
-    
+    text-align: center;
+    margin: auto;
+    padding: 10%;
+}
+
+h1.title {
+    font-size: 2.5rem;
+    padding: 50px;
+}
+
+#landing p {
+    margin: auto;
+    padding-bottom: 35px;
 }
 
 .btn {
-    background-color: transparent;
-    border: 2px solid #A4C3B2;
-    border-radius: 8px;
+    border: none;
+    border-radius: 4px;
     transition-duration: 0.4s;
     padding: 15px;
     font-size: 1rem;
+    background-color: #A4C3B2;
+    color: white;
 }
 
 .btn:hover {
-    background-color: #A4C3B2;
-    color: white;
+    background-color: #7EA091;
 }
