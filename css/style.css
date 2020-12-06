@@ -280,14 +280,15 @@ section#landing {
 .schedule, .tasks {
     border: 1px solid #455E53;
     width: 55%;
-    margin-top: 50px;
+    margin: 10px 0;
     position: absolute;
     display: inline-block;
 }
 
 .schedule h1, .tasks h1 {
     border-bottom: 2px solid #95B1A5;
-    margin: 20px 30px;
+    margin: 30px;
+    font-size: 30px;
 }
 
 .tasks {
@@ -309,6 +310,14 @@ section#landing {
 }
 .dates ul li {
     display: inline;
-    margin-right: 20px;
-    
+    margin-right: 50px;
+}
+
+.dates a {
+    text-decoration: none;
+    color: #A4C3B2;
+}
+
+.dates a:hover {
+    color: #6B9080;
 }
