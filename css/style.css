@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    text-transform: lowercase;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.nav-bar {
+    display: flex;
+    position: relative;
+}
+
+.nav-bar .side-bar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #6B9080;
+    padding: 30px 0;
+}
+
+/* .nav-bar .side-bar h2 {
+    color: #CCE3DE;
+    text-align: center;
+    margin-bottom: 30px;
+} */
+
+.nav-bar .menu ul li {
+    padding: 15px;
+    margin-left: 15px;
+    /* border-bottom: 1px solid #7EA091; */
+}
+
+.nav-bar .menu ul li a {
+    color: #EAF4F4;
+    display: block;
+}
+
+.nav-bar .menu ul li .fa {
+    font-size: 25px;
+}
+
+.menu ul li a .fas, .far {
+    width: 25px;
+    color: #EAF4F4;
+}
+
+.nav-bar .menu ul li:hover {
+    background: #95B1A5;
+}
+
+.nav-bar .menu ul li:hover a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar .side-bar .social-media {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.nav-bar .side-bar .social-media a {
+    display: block;
+    width: 40px;
+    background: #7EA091;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 5px;
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.nav-bar .side-bar .social-media a:hover {
+    background: #A9C7B7;
+}
+
+.top-bar {
+    width: 100%;
+    margin-left: 225px;
+}
+
+.top-bar h1 {
+    padding: 20px;
+    color: #455E53;
+}
+
+.top-bar .content {
+    margin: 20px;
+    color: #5d5d5b;
+    line-height: 25px;
+}
+
+section .container {
+    margin-top: 50px;
+}
+
+section .container .fas {
+    width: 25px;
+    color: #CCE3DE;
+    margin-right: 10px;
+}
+
+section .container h2 {
+    color: #6B9080;
+}
+
+/* LANDING PG */
+body section.landing {
+    background: #6B9080;
+}
+section.landing {
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    
+}
+
+.btn {
+    background-color: transparent;
+    border: 2px solid #A4C3B2;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #A4C3B2;
+    color: white;
+}
