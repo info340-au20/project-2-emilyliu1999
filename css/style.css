@@ -109,6 +109,9 @@ body {
     width: 225px;
     padding: 20px;
     color: #5d5d5b;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 30px;
 }
 .key li {
     display: block;
@@ -121,7 +124,9 @@ body {
 }
 
 section .container {
-    margin-top: 50px;
+    margin-top: 30px;
+    position: absolute;
+    display: inline-block;
 }
 
 section .container .fas {
@@ -270,4 +275,31 @@ section#landing {
 .create a:hover {
     color: #4E6A5E;
     font-size: 1.05rem;
+}
+
+.schedule {
+    border: 1px solid #455E53;
+    width: 70%;
+    margin-top: 50px;
+    position: absolute;
+}
+
+.schedule h1 {
+    border-bottom: 2px solid #95B1A5;
+    margin: 50px;
+}
+
+.dates ul {
+    display: block;
+    width: 100%;
+    color: #A4C3B2;
+    font-size: 30px;
+    font-weight: 100;
+    margin: 50px;
+    padding-left: 10px;
+}
+.dates ul li {
+    display: inline;
+    margin-right: 20px;
+    
 }
