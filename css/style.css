@@ -12,6 +12,7 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 400;
     font-size: 1em;
+    letter-spacing: 1px;
 }
 
 .nav-bar {
@@ -95,7 +96,6 @@ body {
 .top-bar h1 {
     padding: 20px;
     color: #455E53;
-    font-weight: 600;
 }
 
 .top-bar .content {
@@ -104,12 +104,28 @@ body {
     line-height: 25px;
 }
 
+.key {
+    border: 1px solid #A9C7B7;
+    width: 225px;
+    padding: 20px;
+    color: #5d5d5b;
+}
+.key li {
+    display: block;
+    margin: 10px;
+}
+
+.key li i {
+    color: #CCE3DE;
+    font-size: 25px;
+}
+
 section .container {
     margin-top: 50px;
 }
 
 section .container .fas {
-    width: 25px;
+    font-size: 25px;
     color: #CCE3DE;
     margin-right: 10px;
 }
@@ -118,8 +134,17 @@ section .container h2 {
     color: #6B9080;
 }
 
+.card-body li {
+    color: #6B9080; 
+}
+
+/* i want think this color is nice when task is finished :)
+.card-body li {
+    color: #A4C3B2; 
+} */
+
 /* LANDING PG */
-header .landing {
+.landing {
     background: #7EA091;
     padding: 30px;
     color: white;
@@ -134,17 +159,26 @@ section#landing {
     padding: 10%;
 }
 
-h1.title {
+#landing h1 {
     font-size: 2.5rem;
-    padding: 50px;
+    
 }
 
 #landing p {
     margin: auto;
-    padding-bottom: 35px;
+    letter-spacing: 1px;
+    padding: 10px;
 }
 
-.btn {
+#landing i {
+    color: #A4C3B2;
+    font-size: 3rem;
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+}
+
+/* .btn {
     margin-top: 10px;
     border: none;
     border-radius: 4px;
@@ -153,11 +187,11 @@ h1.title {
     font-size: 1rem;
     background-color: #A4C3B2;
     color: white;
-}
+} */
 
-.btn:hover {
+/* .btn:hover {
     background-color: #7EA091;
-}
+} */
 
 .login {
     width: 280px;
@@ -201,12 +235,13 @@ h1.title {
     width: 80%;
 }
 
-.login .btn {
+.btn {
     width: 80%;
     display: block;
     margin: 30px auto;
     background: none;
     border: 1.5px solid #6B9080;
+    border-radius: 5px;
     color: #4E6A5E;
     padding: 10px;
     font-size: 18px;
@@ -214,10 +249,14 @@ h1.title {
     transition-duration: 0.4s;
 }
 
-.login .btn:hover {
+.btn:hover {
     background-color: #7EA091;
     color: white;
     border: none;
+}
+
+#landing .btn {
+    width: 20%;
 }
 
 .create a {
@@ -230,5 +269,5 @@ h1.title {
 
 .create a:hover {
     color: #4E6A5E;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
 }
