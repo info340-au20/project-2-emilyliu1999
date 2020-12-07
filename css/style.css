@@ -308,7 +308,7 @@ section#landing {
     margin: 50px;
     padding-left: 10px;
 }
-.dates ul li {
+.schedule ul li {
     display: inline;
     margin-right: 50px;
 }
@@ -320,4 +320,8 @@ section#landing {
 
 .dates a:hover {
     color: #6B9080;
+}
+
+.week ul {
+   margin-left: 50px;
 }
