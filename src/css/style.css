@@ -324,3 +324,8 @@ section#landing {
 .week ul {
    margin-left: 50px;
 }
+
+.list-group-item:hover {
+    background-color: #95B1A5;
+    color: white;
+}

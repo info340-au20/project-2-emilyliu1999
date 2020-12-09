@@ -4,14 +4,22 @@ import './css/style.css';
 import App from './App.js';
 
 let tasks = [
-  {name: "go to farmer's market & go on a picnic"},
-  {name: "buy some pens from muji"},
-  {name: "decorate room"}
+  {id: 1, name: "go to farmer's market & go on a picnic", complete: false},
+  {id: 2, name: "buy some pens from muji", complete: false},
+  {id: 3, name: "decorate room", complete: false}
 ];
+
+let completed = [];
+
+// let tasks = [
+//   {name: "go to farmer's market & go on a picnic"},
+//   {name: "buy some pens from muji"},
+//   {name: "decorate room"}
+// ];
 
 ReactDOM.render(
   <React.StrictMode>
-    <App tasks={tasks}/>
+    <App tasks={tasks} completed={completed}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
