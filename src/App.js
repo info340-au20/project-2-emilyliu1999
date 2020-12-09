@@ -1,65 +1,126 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
 
-function App() {
+export default App;
+
+export function App(props) {
+  const [tasks, setTasks] = useState(props.tasks);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+      <Header />
+      <Main tasks={props.tasks} />
+    <>
+  );
+}
+
+function Header(props) {
+  return (
+    <header>
+      <div className="nav-bar">
+        <SideBar />
+      </div>
+    </header>
+  );
+}
+
+function SideBar(props) {
+  return (
+    <div className="side-bar">
+      <div className="menu">
+        <ul>
+          <li><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></li>
+          <li><a href="#"><i className="fas fa-home"></i>home</a></li>
+          <li><a href="#"><i className="fas fa-inbox"></i>inbox</a></li>
+          <li><a href="#"><i className="far fa-check-circle"></i>my tasks</a></li>
+          <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
+        </ul>
+      </div>
+      <div className="social-media">
+        <li><a href="#"><i className="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i className="fab fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i className="fab fa-twitter" aria-hidden="true"></i></a></li>
+      </div>
     </div>
   );
 }
 
-function Header() {
+function Main(props) {
   return (
-    <header>
-      <div className="nav-bar">
-        <div className="side-bar">
-          <div className="menu">
-            <ul>
-              <li><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></li>
-              <li><a href="#"><i className="fas fa-home"></i>home</a></li>
-              <li><a href="#"><i className="fas fa-inbox"></i>inbox</a></li>
-              <li><a href="#"><i className="far fa-check-circle"></i>my tasks</a></li>
-              <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
-            </ul>
-          </div>
-          <div className="social-media">
-            <li><a href="#"><i className="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i className="fab fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i className="fab fa-twitter" aria-hidden="true"></i></a></li>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-} 
-
-function MainHeading() {
-  return (
+    <section>
       <div className="top-bar">
         <h1>flora & fauna</h1>
-
         <div className="content">
           <p><em>growth happens little by little, day by day.</em></p>
           <div class="key">
             <li><i className="fas fa-seedling"></i> = in progress</li>
             <li><i className="fab fa-pagelines"></i> = complete</li>
           </div>
+
+          <TaskBox tasks={props.tasks} />
         </div>
       </div>
+    </section>
+  );
+}
+
+function TaskBox(props) {
+  return (
+    <div className="container">
+        <div className="row">
+            <div className="col d-flex">
+                <TaskCard tasks={props.tasks} />
+            </div>
+
+        </div>
+    </div>
+  );
+}
+
+function TaskCard(props) {
+  return (
+    <div className="card mb-4">
+      <div className="card-header" role="navigation">
+          <h2 className="mb-4">My Tasks</h2>
+          <ul className="nav nav-tabs card-header-tabs">
+            <li className="nav-item">
+              <a className="nav-link active" href="#">Current</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#">Upcoming</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#">Completed</a>
+            </li>
+          </ul>
+      </div>
+
+      <div className="card-body">
+          <div className="row">
+              <div className="col-sm">
+                  <TaskList tasks={props.tasks} />
+              </div>
+          </div>
+      </div>
+    </div>
+  );
+}
+
+function TaskList(props) {
+  let taskItems = props.tasks.map(task => <TaskItem name={task.name} />);
+
+  return (
+    <ul className="list-group list-group-flush">
+      {taskItems}
+    </ul>
+  );
+}
+
+function TaskItem(props) {
+  let taskName = props.name;
+  return (
+    <li className="list-group-item"><a href="#"><i class="fas fa-seedling"></i></a> {taskName} </li>
   );
 }
 
@@ -70,46 +131,3 @@ function AddTasks() {
     <li className="list-group-item"><a href="#"><i class="fas fa-seedling"></i></a> {taskitem} </li>
   );
 }
-
-function Main() {
-  <section>
-    <MainHeading />
-    <div className="container">
-        <div className="row">
-            <div className="col d-flex">
-                <div className="card mb-4">
-                    <div className="card-header" role="navigation">
-                        <h2 className="mb-4">My Tasks</h2>
-                        <ul className="nav nav-tabs card-header-tabs">
-                          <li className="nav-item">
-                            <a className="nav-link active" href="#">Current</a>
-                          </li>
-                          <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Upcoming</a>
-                          </li>
-                          <li className="nav-item">
-                            <a className="nav-link disabled" href="#">Completed</a>
-                          </li>
-                        </ul>
-                    </div>
-                
-                <div className="card-body">
-                    <div className="row">
-                        <div className="col-sm">
-                            <ul className="list-group list-group-flush">
-                              <AddTasks />
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-              </div>
-            </div>
-
-        </div>
-    </div>
-  </section>
-}
-
-
-export default App;
