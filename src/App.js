@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React, {useState} from 'react';
 
 export default App;
@@ -52,7 +51,7 @@ export function Main(props) {
         <h1>flora & fauna</h1>
         <div className="content">
           <p><em>growth happens little by little, day by day.</em></p>
-          <div class="key">
+          <div className="key">
             <li><i className="fas fa-seedling"></i> = in progress</li>
             <li><i className="fab fa-pagelines"></i> = complete</li>
           </div>
@@ -107,7 +106,7 @@ export function TaskCard(props) {
 }
 
 export function TaskList(props) {
-  let taskItems = props.tasks.map(task => <TaskItem name={task.name} />);
+  let taskItems = props.tasks.map(task => <TaskItem name={task.name} key={task.name} />);
 
   return (
     <ul className="list-group list-group-flush">
@@ -119,14 +118,6 @@ export function TaskList(props) {
 export function TaskItem(props) {
   let taskName = props.name;
   return (
-    <li className="list-group-item"><a href="#"><i class="fas fa-seedling"></i></a> {taskName} </li>
-  );
-}
-
-export function AddTasks() {
-  let taskitem = "go to farmer's market & go on a picnic";
-
-  return (
-    <li className="list-group-item"><a href="#"><i class="fas fa-seedling"></i></a> {taskitem} </li>
+    <li className="list-group-item"><a href="#"><i className="fas fa-seedling"></i></a> {taskName} </li>
   );
 }
