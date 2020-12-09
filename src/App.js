@@ -1,5 +1,4 @@
 import logo from './logo.svg';
-import './App.css';
 import React, {useState} from 'react';
 
 export default App;
@@ -8,14 +7,14 @@ export function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
 
   return (
-    <>
+    <div className="content">
       <Header />
-      <Main tasks={props.tasks} />
-    <>
+      <Main tasks={tasks} />
+    </div>
   );
 }
 
-function Header(props) {
+export function Header() {
   return (
     <header>
       <div className="nav-bar">
@@ -25,7 +24,7 @@ function Header(props) {
   );
 }
 
-function SideBar(props) {
+export function SideBar() {
   return (
     <div className="side-bar">
       <div className="menu">
@@ -46,7 +45,7 @@ function SideBar(props) {
   );
 }
 
-function Main(props) {
+export function Main(props) {
   return (
     <section>
       <div className="top-bar">
@@ -65,7 +64,7 @@ function Main(props) {
   );
 }
 
-function TaskBox(props) {
+export function TaskBox(props) {
   return (
     <div className="container">
         <div className="row">
@@ -78,7 +77,7 @@ function TaskBox(props) {
   );
 }
 
-function TaskCard(props) {
+export function TaskCard(props) {
   return (
     <div className="card mb-4">
       <div className="card-header" role="navigation">
@@ -107,7 +106,7 @@ function TaskCard(props) {
   );
 }
 
-function TaskList(props) {
+export function TaskList(props) {
   let taskItems = props.tasks.map(task => <TaskItem name={task.name} />);
 
   return (
@@ -117,14 +116,14 @@ function TaskList(props) {
   );
 }
 
-function TaskItem(props) {
+export function TaskItem(props) {
   let taskName = props.name;
   return (
     <li className="list-group-item"><a href="#"><i class="fas fa-seedling"></i></a> {taskName} </li>
   );
 }
 
-function AddTasks() {
+export function AddTasks() {
   let taskitem = "go to farmer's market & go on a picnic";
 
   return (
