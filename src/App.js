@@ -4,6 +4,7 @@ import 'firebase/auth';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
+/* 
 //FirebaseUI config
 const uiConfig = {
   signInOptions: [
@@ -67,12 +68,11 @@ function App(props) {
       </div>
     )
   }
-}
+} 
+*/
 
 
 
-
-export default App;
 
 export function App(props) {
   // changed from decomposed instantiation to prevent ESLint
@@ -277,3 +277,5 @@ export function TaskItem(props) {
       </li>
   );
 }
+
+export default App;
