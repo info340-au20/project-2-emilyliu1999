@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/style.css';
 import App from './App.js';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
 let tasks = [
   {id: 1, name: "go to farmer's market & go on a picnic", complete: false},
