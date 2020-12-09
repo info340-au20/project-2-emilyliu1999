@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    text-transform: lowercase;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+
+.nav-bar {
+    display: flex;
+    position: relative;
+}
+
+.nav-bar .side-bar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #6B9080;
+    padding: 30px 0;
+}
+
+/* .nav-bar .side-bar h2 {
+    color: #CCE3DE;
+    text-align: center;
+    margin-bottom: 30px;
+} */
+
+.nav-bar .menu ul li {
+    padding: 15px;
+    margin-left: 15px;
+    /* border-bottom: 1px solid #7EA091; */
+}
+
+.nav-bar .menu ul li a {
+    color: #EAF4F4;
+    display: block;
+}
+
+.nav-bar .menu ul li .fa {
+    font-size: 25px;
+}
+
+.menu ul li a .fas, .far {
+    width: 25px;
+    color: #EAF4F4;
+}
+
+.nav-bar .menu ul li:hover {
+    background: #95B1A5;
+}
+
+.nav-bar .menu ul li:hover a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar .side-bar .social-media {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.nav-bar .side-bar .social-media a {
+    display: block;
+    width: 40px;
+    background: #7EA091;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 5px;
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.nav-bar .side-bar .social-media a:hover {
+    background: #A9C7B7;
+}
+
+.top-bar {
+    width: 100%;
+    margin-left: 225px;
+}
+
+.top-bar h1 {
+    padding: 20px;
+    color: #455E53;
+}
+
+.top-bar .content {
+    margin: 20px;
+    color: #5d5d5b;
+    line-height: 25px;
+}
+
+.key {
+    border: 1px solid #A9C7B7;
+    width: 225px;
+    padding: 20px;
+    color: #5d5d5b;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+.key li {
+    display: block;
+    margin: 10px;
+}
+
+.key li i {
+    color: #CCE3DE;
+    font-size: 25px;
+}
+
+section .container {
+    margin-top: 30px;
+    position: absolute;
+    display: inline-block;
+}
+
+section .container .fas {
+    font-size: 25px;
+    color: #CCE3DE;
+    margin-right: 10px;
+}
+
+section .container h2 {
+    color: #6B9080;
+}
+
+.card-body li {
+    color: #6B9080;
+}
+
+/* i want think this color is nice when task is finished :)
+.card-body li {
+    color: #A4C3B2;
+} */
+
+/* LANDING PG */
+.landing {
+    background: #7EA091;
+    padding: 30px;
+    color: white;
+}
+
+section#landing {
+    color: #4E6A5E;
+    display: block;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding: 10%;
+}
+
+#landing h1 {
+    font-size: 2.5rem;
+
+}
+
+#landing p {
+    margin: auto;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+#landing i {
+    color: #A4C3B2;
+    font-size: 3rem;
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+}
+
+/* .btn {
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #A4C3B2;
+    color: white;
+} */
+
+/* .btn:hover {
+    background-color: #7EA091;
+} */
+
+.login {
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login h1 {
+    margin-bottom: 30px;
+    padding: 13px 0;
+    font-size: 3rem;
+    color: #455E53;
+    text-align: center;
+}
+
+.textbox {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #A4C3B2;
+}
+
+.textbox i {
+    width: 25px;
+    color: #95B1A5;
+    text-align: center;
+}
+
+
+.textbox input {
+    border: none;
+    outline: none;
+    background: none;
+    color: #7EA091;
+    font-size: 18px;
+    margin: 0 10px;
+    width: 80%;
+}
+
+.btn {
+    width: 80%;
+    display: block;
+    margin: 30px auto;
+    background: none;
+    border: 1.5px solid #6B9080;
+    border-radius: 5px;
+    color: #4E6A5E;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    background-color: #7EA091;
+    color: white;
+    border: none;
+}
+
+#landing .btn {
+    width: 20%;
+}
+
+.create a {
+    color: #7EA091;
+    display: block;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
+.create a:hover {
+    color: #4E6A5E;
+    font-size: 1.05rem;
+}
+
+.schedule, .tasks {
+    border: 1px solid #455E53;
+    width: 55%;
+    margin: 10px 0;
+    position: absolute;
+    display: inline-block;
+}
+
+.schedule h1, .tasks h1 {
+    border-bottom: 2px solid #95B1A5;
+    margin: 30px;
+    font-size: 30px;
+}
+
+.tasks {
+    border: 1px solid #A9C7B7;
+    width: 250px;
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+}
+
+.dates ul {
+    display: block;
+    width: 100%;
+    color: #A4C3B2;
+    font-size: 25px;
+    font-weight: 100;
+    margin: 50px;
+    padding-left: 10px;
+}
+.schedule ul li {
+    display: inline;
+    margin-right: 50px;
+}
+
+.dates a {
+    text-decoration: none;
+    color: #A4C3B2;
+}
+
+.dates a:hover {
+    color: #6B9080;
+}
+
+.week ul {
+   margin-left: 50px;
+}
