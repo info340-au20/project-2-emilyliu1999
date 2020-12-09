@@ -1,6 +1,6 @@
-# Project 2
+# Getting Started with Create React App
 
-This repository contains code for an interactive web app, created for the _Client-Side Web Development_ course at the UW iSchool.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 The site can be viewed at <https://firebase-project-id.firebaseapp.com//>
 

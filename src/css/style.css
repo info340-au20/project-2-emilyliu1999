@@ -140,12 +140,12 @@ section .container h2 {
 }
 
 .card-body li {
-    color: #6B9080; 
+    color: #6B9080;
 }
 
 /* i want think this color is nice when task is finished :)
 .card-body li {
-    color: #A4C3B2; 
+    color: #A4C3B2;
 } */
 
 /* LANDING PG */
@@ -166,7 +166,6 @@ section#landing {
 
 #landing h1 {
     font-size: 2.5rem;
-    
 }
 
 #landing p {
