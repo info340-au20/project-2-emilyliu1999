@@ -19,6 +19,8 @@ loginButton.addEventListener("click", (submit) => {
     }
 })
 
+export default login;
+
 /* 
 //FirebaseUI config
 const uiConfig = {

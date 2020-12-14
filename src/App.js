@@ -3,8 +3,12 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 // import LandingPage from './landing.js';
-// import 'css/style.css'; //import css file!
-// import { Route, Switch, Redirect} from 'react-router-dom';
+// import LoginPage from './login.js';
+// import SchedulePage from './schedule.js';
+// import TaskPage from './index.js';
+
+import 'css/style.css'; //import css file!
+import { Route, Switch, Redirect} from 'react-router-dom';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -78,9 +82,9 @@ export function SideBar() {
 
         {/* <Switch>
               <Route exact path="/" render={} />
-              <Route path="/signout" component={LandingPage} />
-              <Route path="/resources" component={ResourcesPage} />
-              <Route path="/adopt/:petname" component={}/>
+              <Route path="/tasks" component={TaskPage} />
+              <Route path="/home" component={LoginPage} />
+              <Route path="/schedule" component={SchedulePage} />
               <Redirect to="/" />
         </Switch> */}
 
