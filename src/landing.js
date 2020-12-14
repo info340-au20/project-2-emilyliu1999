@@ -4,5 +4,3 @@ import 'firebase/auth';
 import 'css/style.css'; //import css file!
 
 
-
-export default App;
