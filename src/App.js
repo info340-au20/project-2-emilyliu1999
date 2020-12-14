@@ -8,7 +8,7 @@ import 'firebase/auth';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-/* 
+/*
 //FirebaseUI config
 const uiConfig = {
   signInOptions: [
@@ -72,7 +72,7 @@ function App(props) {
       </div>
     )
   }
-} 
+}
 */
 
 
@@ -176,10 +176,20 @@ export function Main(props) {
             <li><i className="fab fa-pagelines"></i> = complete</li>
           </div>
 
+          <AddTaskButton />
+
           <TaskBox tasks={props.tasks} completed={props.completed} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
         </div>
       </div>
     </section>
+  );
+}
+
+export function AddTaskButton(props) {
+  return (
+    <div className="key">
+      <li>Add New Task</li>
+    </div>
   );
 }
 
@@ -227,9 +237,9 @@ export function TaskCard(props) {
       <div className="card-body">
           <div className="row">
               <div className="col-sm">
-                  <TaskList 
-                    tasks={props.tasks} 
-                    markCompleted={props.markCompleted} 
+                  <TaskList
+                    tasks={props.tasks}
+                    markCompleted={props.markCompleted}
                     undoCompletion={props.undoCompletion}
                   />
               </div>
@@ -242,16 +252,16 @@ export function TaskCard(props) {
 export function TaskList(props) {
   let taskItems;
   if (props.tasks !== undefined) {
-    taskItems = props.tasks.map(task => 
-                        <TaskItem 
-                            id={task.id}
-                            name={task.name} 
-                            key={task.name} 
-                            complete={task.complete}
-                            markCompleted={props.markCompleted} 
-                            undoCompletion={props.undoCompletion}
-                        />
-                    );
+    taskItems = props.tasks.map(task =>
+      <TaskItem
+          id={task.id}
+          name={task.name}
+          key={task.name}
+          complete={task.complete}
+          markCompleted={props.markCompleted}
+          undoCompletion={props.undoCompletion}
+      />
+    );
   } else {
     taskItems = undefined;
   }
