@@ -199,10 +199,14 @@ section#landing {
 
 .login {
     width: 280px;
-    position: absolute;
+    position: absolute; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    /* margin: auto;
+    padding: auto;
+    justify-content: center; */
 }
 
 .login h1 {
@@ -228,7 +232,6 @@ section#landing {
     text-align: center;
 }
 
-
 .textbox input {
     border: none;
     outline: none;
@@ -237,6 +240,25 @@ section#landing {
     font-size: 18px;
     margin: 0 10px;
     width: 80%;
+}
+
+#login-error {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#login-error-msg {
+    width: 25%;
+    text-align: center;
+    margin: 2.5%;
+    padding: 5px;
+    font-size: 12px;
+    color: #f79895;
+    border: 1px solid #e7b7b5;
+    opacity: 0; 
 }
 
 .btn {
