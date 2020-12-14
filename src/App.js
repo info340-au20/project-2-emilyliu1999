@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+// import LandingPage from './landing.js';
+// import 'css/style.css'; //import css file!
+// import { Route, Switch, Redirect} from 'react-router-dom';
+
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 /* 
@@ -141,6 +145,15 @@ export function SideBar() {
           <li><a href="#"><i className="far fa-check-circle"></i>my tasks</a></li>
           <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
         </ul>
+
+        {/* <Switch>
+              <Route exact path="/" render={} />
+              <Route path="/signout" component={LandingPage} />
+              <Route path="/resources" component={ResourcesPage} />
+              <Route path="/adopt/:petname" component={}/>
+              <Redirect to="/" />
+        </Switch> */}
+
       </div>
       <div className="social-media">
         <li><a href="#"><i className="fab fa-facebook-f" aria-hidden="true"></i></a></li>
