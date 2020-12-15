@@ -358,6 +358,10 @@ section#landing {
     color: white;
 }
 
+.completed-list {
+  text-decoration: line-through;
+}
+
 /* Login page */
 
 .login-page {
@@ -372,7 +376,7 @@ section#landing {
   text-align: center;
 }
 
-/* Form page */
+/* Form page (inspired by https://codesandbox.io/s/formik-v2-tutorial-start-s04yr?file=/src/styles.css) */
 
 /* Form
 ––––––––––––––––––––––––––––––––– */
@@ -466,13 +470,6 @@ input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  input[type="checkbox"] {
-    background-color: var(--gray-800);
-    border-color: var(--gray-600);
-  }
-}
-
 input[type="checkbox"]:hover {
   cursor: pointer;
 }
@@ -502,12 +499,6 @@ input[type="radio"] {
   justify-content: center;
   position: relative;
   display: flex;
-}
-
-@media (prefers-color-scheme: dark) {
-  input[type="radio"] {
-    border: 2px solid black;
-  }
 }
 
 @media (hover: hover) {
@@ -569,24 +560,6 @@ button {
   }
 }
 
-@media (hover: hover) and (prefers-color-scheme: dark) {
-  input[type="submit"]:hover,
-  input[type="reset"]:hover,
-  input[type="button"]:hover,
-  button:hover {
-    cursor: pointer;
-    background-color: var(--gray-300);
-  }
-}
-
-button:focus-visible,
-input[type="submit"]:focus-visible,
-input[type="reset"]:focus-visible,
-input[type="button"]:focus-visible {
-  border-color: var(--focus-ring-color);
-  outline: none;
-}
-
 /* Tables
 ––––––––––––––––––––––––––––––––– */
 table {
@@ -609,21 +582,8 @@ th {
   color: var(--gray-300);
 }
 
-@media (prefers-color-scheme: dark) {
-  th {
-    border-color: var(--gray-700);
-    color: var(--gray-700);
-  }
-}
-
 td {
   border-bottom: 2px solid var(--gray-300);
-}
-
-@media (prefers-color-scheme: dark) {
-  td {
-    border-color: var(--gray-700);
-  }
 }
 
 /* Code
@@ -638,12 +598,6 @@ code {
   display: inline-block;
   vertical-align: middle;
   border-radius: 10px;
-}
-
-@media (prefers-color-scheme: dark) {
-  code {
-    background-color: var(--gray-700);
-  }
 }
 
 p > code {
@@ -670,12 +624,6 @@ blockquote {
   border-left: 0.25rem solid var(--gray-100);
   padding: 0 1rem;
   margin-bottom: 1.563rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  blockquote {
-    border-left: 0.25rem solid var(--gray-700);
-  }
 }
 
 /* List
@@ -735,12 +683,6 @@ abbr {
   font-size: 12px;
   color: var(--red-600);
   margin-top: 0.25rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .error {
-    color: var(--red-400);
-  }
 }
 
 button:disabled {

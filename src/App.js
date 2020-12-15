@@ -267,7 +267,7 @@ export function TaskCard(props) {
           </ul>
       </div>
 
-      <div className="card-body">
+      <div className={"card-body " + title + "-list"}>
           <div className="row">
               <div className="col-sm">
                   <TaskList
