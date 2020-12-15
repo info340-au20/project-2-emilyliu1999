@@ -129,7 +129,7 @@ export function SideBar() {
     <div className="side-bar">
       <div className="menu">
         <ul>
-          <li><i className="fa fa-bars" aria-label="menu"></i></li>
+          <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink to="/signin"><i className="fas fa-lock"></i>log out</NavLink></li>
@@ -144,6 +144,12 @@ export function SideBar() {
     </div>
   );
 }
+
+// collapse hamburger menu
+function show() {
+  document.getElementsByClassName('side-bar').classList.toggle('active');
+}
+
 
 // React component handling routing to the proper pages
 export function Main(props) {

@@ -21,23 +21,20 @@ body {
 }
 
 .nav-bar .side-bar {
-    position: fixed;
+    position: absolute;
     width: 200px;
-    height: 100%;
+    height: 100vh;
     background: #6B9080;
     padding: 30px 0;
 }
 
-/* .nav-bar .side-bar h2 {
-    color: #CCE3DE;
-    text-align: center;
-    margin-bottom: 30px;
-} */
+.nav-bar .side-bar:active {
+    left: -200px;
+} 
 
 .nav-bar .menu ul li {
     padding: 15px;
     margin-left: 15px;
-    /* border-bottom: 1px solid #7EA091; */
 }
 
 .nav-bar .menu ul li a {
@@ -49,7 +46,7 @@ body {
     font-size: 25px;
 }
 
-.menu ul li a .fas, .far {
+.menu ul li .fa, .fas, .far {
     width: 25px;
     color: #EAF4F4;
 }
@@ -87,6 +84,7 @@ body {
 .nav-bar .side-bar .social-media a:hover {
     background: #A9C7B7;
 }
+
 
 .top-bar {
     width: 100%;
@@ -209,10 +207,6 @@ section#landing {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    /* margin: auto;
-    padding: auto;
-    justify-content: center; */
 }
 
 .login h1 {
@@ -248,7 +242,7 @@ section#landing {
     width: 80%;
 }
 
-#login-error {
+/* #login-error {
     width: 100%;
     height: 100%;
     display: grid;
@@ -265,7 +259,7 @@ section#landing {
     color: #f79895;
     border: 1px solid #e7b7b5;
     opacity: 0;
-}
+} */
 
 .btn {
     width: 80%;
