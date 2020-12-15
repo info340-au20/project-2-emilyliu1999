@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import TaskDetailsPage from './taskDetails.js';
 // import SchedulePage from './schedule.js';
 // import InboxPage from './index.js';
 
@@ -156,12 +157,14 @@ export function Main(props) {
     taskRef.on('value', (snapshot) => {
       const taskValue = snapshot.val();
       let objectKeyArray = Object.keys(taskValue);
-      tasks = objectKeyArray.map((key) => {
-        let singleTaskObj = taskValue[key];
-        singleTaskObj.key = key;
-        return singleTaskObj;
-      })
-      props.taskUpdate(tasks);
+      if (objectKeyArray) {
+        tasks = objectKeyArray.map((key) => {
+          let singleTaskObj = taskValue[key];
+          singleTaskObj.key = key;
+          return singleTaskObj;
+        })
+        props.taskUpdate(tasks);
+      }
     });
 
     return function cleanup() {
@@ -179,7 +182,10 @@ export function Main(props) {
           <Route exact path="/" render={(routerProps) => (
             <HomePage user={user} tasks={tasks} />
           )}/>
-          <Redirect to="/" />
+          <Route path="/task/:taskKey" render={(routerProps) => (
+            <TaskDetailsPage user={user} />
+          )}/>
+          <Redirect exact to="/" />
         </Switch>
       </div>
     </section>
@@ -198,15 +204,13 @@ export function HomePage(props) {
         <li><i className="fab fa-pagelines"></i> = complete</li>
       </div>
 
-      <TaskBox username={user.displayName} tasks={props.tasks} />
-    </div>
-  );
-}
+      <NavLink to="/task/new">
+        <button className="key">
+          <li>Add New Task</li>
+        </button>
+      </ NavLink>
 
-export function AddTaskButton(props) {
-  return (
-    <div className="key">
-      <li>Add New Task</li>
+      <TaskBox username={user.displayName} tasks={props.tasks} />
     </div>
   );
 }
@@ -282,7 +286,7 @@ export function TaskList(props) {
   if (props.tasks !== undefined) {
     taskItems = props.tasks.map(task =>
       // pass username, task info, and task key twice (once as React key, again for querying the database)
-      <TaskItem username={props.username} name={task.name} key={task.key} queryKey={task.key} complete={task.complete} />
+      <TaskItem username={props.username} name={task.name} desc={task.desc} deadline={task.deadline} key={task.key} queryKey={task.key} complete={task.complete} />
     );
   } else {
     taskItems = undefined;
@@ -297,7 +301,6 @@ export function TaskList(props) {
 
 export function TaskItem(props) {
   let taskName = props.name;
-  // console.log(props.key);
 
   // set up initial state
   let icon;
@@ -309,8 +312,7 @@ export function TaskItem(props) {
 
   const handleClick = (event) => {
     let queryString = props.username + "/tasks/" + props.queryKey;
-    console.log("sajksf: " + queryString);
-    firebase.database().ref(queryString).set({name: taskName, complete: !props.complete});
+    firebase.database().ref(queryString).set({name: taskName, desc: props.desc, deadline: props.deadline, complete: !props.complete});
   }
 
   return (
