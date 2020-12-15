@@ -77,6 +77,7 @@ export function SideBar() {
           <li><a href="#"><i className="fas fa-inbox"></i>inbox</a></li>
           <li><a href="#"><i className="far fa-check-circle"></i>my tasks</a></li>
           <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
+          <li><a href="#"><i className="fas fa-lock"></i>log out</a></li>
         </ul>
 
       </div>
@@ -88,6 +89,9 @@ export function SideBar() {
     </div>
   );
 }
+
+/* <Route path="/tasks" component={TaskPage} />
+<Route path="/schedule" component={SchedulePage} /> */
 
 export function Main(props) {
   return (
@@ -108,8 +112,6 @@ export function Main(props) {
   );
 }
 
-/* <Route path="/tasks" component={TaskPage} />
-<Route path="/schedule" component={SchedulePage} /> */
 
 export function HomePage(props) {
   return (
