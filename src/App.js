@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-// import LandingPage from './landing.js';
 import LoginPage from './login.js';
-// import SchedulePage from './schedule.js';
-// import TaskPage from './index.js';
+import SchedulePage from './schedule.js';
+import InboxPage from './index.js';
 
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 
@@ -141,12 +140,12 @@ export function SideBar() {
     <div className="side-bar">
       <div className="menu">
         <ul>
-          <li><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></li>
+          <li><NavLink><i className="fa fa-bars" aria-label="menu"></i></NavLink></li>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
-          <li><a href="#"><i className="fas fa-inbox"></i>inbox</a></li>
-          <li><a href="#"><i className="far fa-check-circle"></i>my tasks</a></li>
-          <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
-          <li onClick={handleSignOut}><a href="#"><i className="fas fa-lock"></i>log out</a></li>
+          <li><NavLink to="/inbox" activeClassName="activeLink"><i className="fas fa-inbox"></i>inbox</NavLink></li>
+          <li><NavLink to="/mytasks" activeClassName="activeLink"><i className="far fa-check-circle"></i>my tasks</NavLink></li>
+          <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
+          <li onClick={handleSignOut}><NavLink to="/signin"><i className="fas fa-lock"></i>log out</NavLink></li>
         </ul>
 
       </div>
@@ -159,9 +158,6 @@ export function SideBar() {
   );
 }
 
-/* <Route path="/tasks" component={TaskPage} />
-<Route path="/schedule" component={SchedulePage} /> */
-
 // React component handling routing to the proper pages
 export function Main(props) {
   return (
@@ -172,6 +168,10 @@ export function Main(props) {
           <Route exact path="/" render={(routerProps) => (
             <HomePage {...routerProps}/>
           )}/>
+          <Route path="/inbox" component={InboxPage} />
+          <Route path="/mytasks" component={App} />
+          <Route path="/schedule" component={SchedulePage} />
+          <Route path="/signin" component={LoginPage} />
           <Redirect to="/" />
         </Switch>
       </div>
