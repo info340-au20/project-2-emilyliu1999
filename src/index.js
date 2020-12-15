@@ -25,18 +25,10 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-let tasks = [
-  {id: 1, name: "go to farmer's market & go on a picnic", complete: false},
-  {id: 2, name: "buy some pens from muji", complete: false},
-  {id: 3, name: "decorate room", complete: false}
-];
-
-let completed = [];
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App tasks={tasks} completed={completed}/>
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

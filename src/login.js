@@ -55,7 +55,6 @@ export function LoginPage(props) {
   };
 
   // state variables for error message and current user
-  const [errorMessage, setErrorMessage] = useState(undefined);
   const [user, setUser] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -64,11 +63,11 @@ export function LoginPage(props) {
     const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
       if(firebaseUser) {
         console.log( firebaseUser.displayName + ", you are logged in!")
-        setUser(firebaseUser)
+        setUser(firebaseUser);
         setIsLoading(false);
       } else {
         console.log("Logged out")
-        setUser(null)
+        setUser(null);
         setIsLoading(false);
       }
     });
@@ -80,7 +79,6 @@ export function LoginPage(props) {
 
   //allow user to log out
   const handleSignOut = () => {
-    setErrorMessage(null);
     firebase.auth().signOut()
   }
 

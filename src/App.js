@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 // import LandingPage from './landing.js';
-import LoginPage from './login.js';
+// import LoginPage from './login.js';
 // import SchedulePage from './schedule.js';
 // import TaskPage from './index.js';
 
@@ -33,46 +33,19 @@ const uiConfig = {
 export function App(props) {
   // changed from decomposed instantiation to prevent ESLint
   // from getting angry about an unused variable
-  const [tasks, setTasks] = useState(props.tasks);
-  const [completed, setCompleted] = useState(props.completed);
+  const [tasks, setTasks] = useState([]);
+  const [completed, setCompleted] = useState([]);
+
   // state variables for error message and current user
   const [user, setUser] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
 
-  const markCompleted = (taskId) => {
-    let updatedTasksArray = tasks.map((task) => {
-      let taskCopy = {...task};
-      if (taskCopy.id === taskId) {
-        taskCopy.complete = !taskCopy.complete;
-        completed.push(taskCopy);
-      }
-      return taskCopy;
-    })
-
-    updatedTasksArray = updatedTasksArray.filter((item) => item.id !== taskId);
-
-    setTasks(updatedTasksArray);
-    setCompleted(completed);
-  }
-
-  const undoCompletion = (taskId) => {
-    let updatedCompletedArray = completed.map((task) => {
-      let taskCopy = {...task};
-      if (taskCopy.id === taskId) {
-        taskCopy.complete = !taskCopy.complete;
-        tasks.push(taskCopy);
-      }
-      return taskCopy;
-    })
-
-    updatedCompletedArray = updatedCompletedArray.filter((item) => item.id !== taskId);
-
-    setTasks(tasks);
-    setCompleted(updatedCompletedArray);
-  }
+  // callback for updating the state for tasks
+  const handleTaskUpdate = (newTasks) => {
+    setTasks(newTasks);
+  };
 
   ////////////////////
-
   // use effect hook to wait until the component loads
   useEffect(() => {
     const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
@@ -113,7 +86,7 @@ export function App(props) {
     content = (
       <div className="content">
         <Header />
-        <Main user={user} tasks={tasks} completed={completed} markCompleted={markCompleted} undoCompletion={undoCompletion}/>
+        <Main user={user} tasks={tasks} completed={completed} taskUpdate={handleTaskUpdate}/>
       </div>
     );
   }
@@ -133,7 +106,6 @@ export function Header() {
 export function SideBar() {
   //allow user to log out
   const handleSignOut = () => {
-    console.log("outtie");
     firebase.auth().signOut()
   }
 
@@ -164,13 +136,35 @@ export function SideBar() {
 
 // React component handling routing to the proper pages
 export function Main(props) {
+  const user = {...props.user};
+  const tasks = [...props.tasks];
+  const taskRef = firebase.database().ref(user.displayName + "/tasks");
+
+  useEffect(() => {
+    let tasks = [];
+    taskRef.on('value', (snapshot) => {
+      const taskValue = snapshot.val();
+      let objectKeyArray = Object.keys(taskValue);
+      tasks = objectKeyArray.map((key) => {
+        let singleTaskObj = taskValue[key];
+        singleTaskObj.key = key;
+        return singleTaskObj;
+      })
+      props.taskUpdate(tasks);
+    });
+
+    return function cleanup() {
+      taskRef.off();
+    }
+  }, []);
+
   return (
     <section>
       <div className="top-bar">
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path="/" render={(routerProps) => (
-            <HomePage {...routerProps}/>
+            <HomePage user={user} tasks={tasks} />
           )}/>
           <Redirect to="/" />
         </Switch>
@@ -180,15 +174,18 @@ export function Main(props) {
 }
 
 export function HomePage(props) {
+  const user = {...props.user};
+  const tasks = [...props.tasks];
   return (
     <div className="content">
+      <p><em>welcome, {user.displayName}</em></p>
       <p><em>growth happens little by little, day by day.</em></p>
       <div className="key">
         <li><i className="fas fa-seedling"></i> = in progress</li>
         <li><i className="fab fa-pagelines"></i> = complete</li>
       </div>
 
-      <TaskBox tasks={props.tasks} completed={props.completed} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
+      <TaskBox username={user.displayName} tasks={props.tasks} />
     </div>
   );
 }
@@ -202,14 +199,25 @@ export function AddTaskButton(props) {
 }
 
 export function TaskBox(props) {
+  let taskList = [];
+  let completedList = [];
+  props.tasks.forEach((task) => {
+    // sort into current and completed lists
+    if (!task.complete) {
+      taskList.push(task);
+    } else {
+      completedList.push(task);
+    }
+  });
+
   return (
     <div className="container">
         <div className="row">
             <div className="col d-flex">
-                <TaskCard tasks={props.tasks} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
+                <TaskCard username={props.username} tasks={taskList} isTaskList={true}/>
             </div>
             <div className="col d-flex">
-                <TaskCard tasks={props.completed} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
+                <TaskCard username={props.username} tasks={completedList} isTaskList={false}/>
             </div>
         </div>
     </div>
@@ -219,7 +227,7 @@ export function TaskBox(props) {
 export function TaskCard(props) {
 
   let title;
-  if (props.tasks && props.tasks.length > 0) {
+  if (props.isTaskList) {
     title = "current";
   } else {
     title = "completed";
@@ -246,9 +254,8 @@ export function TaskCard(props) {
           <div className="row">
               <div className="col-sm">
                   <TaskList
+                    username={props.username}
                     tasks={props.tasks}
-                    markCompleted={props.markCompleted}
-                    undoCompletion={props.undoCompletion}
                   />
               </div>
           </div>
@@ -261,14 +268,8 @@ export function TaskList(props) {
   let taskItems;
   if (props.tasks !== undefined) {
     taskItems = props.tasks.map(task =>
-      <TaskItem
-          id={task.id}
-          name={task.name}
-          key={task.name}
-          complete={task.complete}
-          markCompleted={props.markCompleted}
-          undoCompletion={props.undoCompletion}
-      />
+      // pass username, task info, and task key twice (once as React key, again for querying the database)
+      <TaskItem username={props.username} name={task.name} key={task.key} queryKey={task.key} complete={task.complete} />
     );
   } else {
     taskItems = undefined;
@@ -283,6 +284,7 @@ export function TaskList(props) {
 
 export function TaskItem(props) {
   let taskName = props.name;
+  // console.log(props.key);
 
   // set up initial state
   let icon;
@@ -293,11 +295,9 @@ export function TaskItem(props) {
   }
 
   const handleClick = (event) => {
-      if (!props.complete) {
-        props.markCompleted(props.id)
-      } else {
-        props.undoCompletion(props.id);
-      }
+    let queryString = props.username + "/tasks/" + props.queryKey;
+    console.log("sajksf: " + queryString);
+    firebase.database().ref(queryString).set({name: taskName, complete: !props.complete});
   }
 
   return (
