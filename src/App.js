@@ -301,6 +301,7 @@ export function TaskList(props) {
 
 export function TaskItem(props) {
   let taskName = props.name;
+  let queryString = props.username + "/tasks/" + props.queryKey;
 
   // set up initial state
   let icon;
@@ -311,15 +312,20 @@ export function TaskItem(props) {
   }
 
   const handleClick = (event) => {
-    let queryString = props.username + "/tasks/" + props.queryKey;
     firebase.database().ref(queryString).set({name: taskName, desc: props.desc, deadline: props.deadline, complete: !props.complete});
   }
 
+  const handleDeleteClick = (event) => {
+    firebase.database().ref(queryString).remove();
+  }
+
   return (
-      <li className="list-group-item" onClick={handleClick}>
-      <a href="#"></a>
-      {icon}
-      {taskName}
+      <li className="list-group-item">
+        <div onClick={handleClick}>
+          {icon}
+          {taskName}
+        </div>
+        <i className="fa fa-window-close" onClick={handleDeleteClick} aria-hidden="true"></i>
       </li>
   );
 }
