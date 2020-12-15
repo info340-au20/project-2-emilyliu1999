@@ -205,13 +205,13 @@ export function HomePage(props) {
       <p><em>welcome, {user.displayName}</em></p>
       <p><em>growth happens little by little, day by day.</em></p>
       <div className="key">
-        <li><i className="fas fa-seedling"></i> = in progress</li>
-        <li><i className="fab fa-pagelines"></i> = complete</li>
+        <li><i className="fas fa-seedling"></i>= in progress</li>
+        <li><i className="fab fa-pagelines"></i>= complete</li>
       </div>
 
       <NavLink to="/task/new">
         <button className="key">
-          <li>Add New Task</li>
+          <li><i class="fas fa-plus-circle"></i>Add New Task</li>
         </button>
       </ NavLink>
 

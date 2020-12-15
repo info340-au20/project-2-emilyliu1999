@@ -87,8 +87,9 @@ body {
 
 
 .top-bar {
-    width: 100%;
-    margin-left: 225px;
+    width: 100vw;
+    display: grid;
+    margin-left: 220px;
 }
 
 .top-bar h1 {
@@ -104,12 +105,13 @@ body {
 
 .key {
     border: 1px solid #A9C7B7;
-    width: 225px;
-    padding: 20px;
+    width: 220px;
+    padding: 15px;
     color: #5d5d5b;
     display: inline-block;
     margin-right: 30px;
     margin-top: 30px;
+    border-radius: 0;
 }
 .key li {
     display: block;
@@ -119,12 +121,14 @@ body {
 .key li i {
     color: #CCE3DE;
     font-size: 25px;
+    margin-right: 7px;
 }
 
 section .container {
     margin-top: 30px;
     position: absolute;
-    display: inline-block;
+    display: grid;
+    margin-right: 100px;
 }
 
 section .container .fas {
@@ -185,21 +189,6 @@ section#landing {
     text-align: center;
     padding: 20px;
 }
-
-/* .btn {
-    margin-top: 10px;
-    border: none;
-    border-radius: 4px;
-    transition-duration: 0.4s;
-    padding: 15px;
-    font-size: 1rem;
-    background-color: #A4C3B2;
-    color: white;
-} */
-
-/* .btn:hover {
-    background-color: #7EA091;
-} */
 
 .login {
     width: 280px;
