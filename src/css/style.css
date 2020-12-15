@@ -15,22 +15,61 @@ body {
     letter-spacing: 1px;
 }
 
-.nav-bar {
+/* .nav-bar {
     display: flex;
     position: relative;
+} */
+
+.nav-bar {
+    background-color: #6B9080;
 }
 
 .nav-bar .side-bar {
-    position: absolute;
+    /* position: absolute;
     width: 200px;
     height: 100vh;
     background: #6B9080;
-    padding: 30px 0;
+    padding: 30px 0; */
+
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
 }
 
-.nav-bar .side-bar:active {
-    left: -200px;
-} 
+.nav-bar .side-bar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+  }
+  
+  .openbtn {
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #6B9080;
+    color: white;
+    padding: 10px 15px;
+    margin: 0 20px;
+    border: none;
+    width: 50px;
+  }
+
+  .openbtn:hover {
+    background-color: #7EA091;
+  }
+
+ .top-bar {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
 
 .nav-bar .menu ul li {
     padding: 15px;
@@ -42,13 +81,18 @@ body {
     display: block;
 }
 
-.nav-bar .menu ul li .fa {
-    font-size: 25px;
-}
-
-.menu ul li .fa, .fas, .far {
+.menu ul li .fas, .far {
     width: 25px;
     color: #EAF4F4;
+}
+
+.nav-bar .menu .closebtn {
+    color: #CCE3DE;
+    text-decoration: none;
+}
+
+.nav-bar .menu .closebtn:hover {
+    color: white;
 }
 
 .nav-bar .menu ul li:hover {
@@ -89,7 +133,7 @@ body {
 .top-bar {
     width: 100vw;
     display: grid;
-    margin-left: 220px;
+    /* margin-left: 220px; */
 }
 
 .top-bar h1 {
