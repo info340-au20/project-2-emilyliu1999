@@ -75,9 +75,26 @@ export function App(props) {
 
   if(!user) { // if no user has successfully logged in, show sign in form
     content = (
-      <div className="login-page">
-        <h2>sign in</h2>
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <div>
+        <div class="landing">
+            <h1>flora & fauna</h1>
+        </div>
+
+        <section id="landing">
+          <h1>let's get stuff done together.</h1>
+          <i class="fab fa-pagelines"></i>
+          <i class="fab fa-pagelines"></i>
+          <i class="fab fa-pagelines"></i>
+          <p>
+              flora & fauna is more than just a productivity tool– we're a way of life.
+              We're here to keep you on track as you bloom towards your lofiest goals, every step of the way.
+          </p>
+
+          <div class="login-page">
+            <h2>sign in</h2>
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+          </div>
+        </section>
       </div>
     );
   } else {  // otherwise, show welcome page

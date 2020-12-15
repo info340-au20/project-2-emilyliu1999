@@ -354,6 +354,10 @@ section#landing {
 
 /* Login page */
 
+.login-page {
+  margin-top: 75px;
+}
+
 .login-page h2 {
   text-align: center;
 }
