@@ -111,10 +111,9 @@ export function SideBar() {
     <div className="side-bar">
       <div className="menu">
         <ul>
-          <li><NavLink><i className="fa fa-bars" aria-label="menu"></i></NavLink></li>
+          <li><i className="fa fa-bars" aria-label="menu"></i></li>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><NavLink to="/inbox" activeClassName="activeLink"><i className="fas fa-inbox"></i>inbox</NavLink></li>
-          <li><NavLink to="/mytasks" activeClassName="activeLink"><i className="far fa-check-circle"></i>my tasks</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink to="/signin"><i className="fas fa-lock"></i>log out</NavLink></li>
         </ul>
@@ -153,6 +152,8 @@ export function Main(props) {
     }
   }, []);
 
+
+  // <Route path="/schedule" component={SchedulePage} />
   return (
     <section>
       <div className="top-bar">
@@ -161,10 +162,6 @@ export function Main(props) {
           <Route exact path="/" render={(routerProps) => (
             <HomePage user={user} tasks={tasks} />
           )}/>
-          <Route path="/inbox" component={InboxPage} />
-          <Route path="/mytasks" component={App} />
-          <Route path="/schedule" component={SchedulePage} />
-          <Route path="/signin" component={LoginPage} />
           <Redirect to="/" />
         </Switch>
       </div>
