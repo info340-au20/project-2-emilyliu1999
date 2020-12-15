@@ -3,16 +3,21 @@ import firebase from 'firebase/app';
 import { Formik, Field, Form, ErrorMessage, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import DatePicker from "react-datepicker";
-import { NavLink, useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 
 // React component for the detailed page view of a task
 export function TaskDetailsPage(props) {
   const [currentTask, setCurrentTask] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isRedirect, setIsRedirect] = useState(false);
 
   const { taskKey } = useParams();
   const queryString = props.user.displayName + "/tasks/" + taskKey;
+
+  const redirectToHome = () => {
+    return <Redirect exact to="/" />;
+  };
 
   const addNewTask = (taskKey, task) => {
     if (taskKey === "new") {
@@ -45,6 +50,11 @@ export function TaskDetailsPage(props) {
       }
     }).then(() => setIsLoading(false));
   }, []);
+
+  // if there has just been a change, redirect to the home page
+  if (isRedirect) {
+    return redirectToHome();
+  }
 
   if (isLoading) {
     return (
@@ -82,6 +92,7 @@ export function TaskDetailsPage(props) {
            setTimeout(() => {
              let newTaskObj = {name: values.taskName, desc: values.taskDescription, deadline: values.deadline.toString(), complete: values.complete};
              addNewTask(taskKey, newTaskObj);
+             setIsRedirect(true);
              setSubmitting(false);
            }, 400);
          }}
@@ -105,6 +116,9 @@ export function TaskDetailsPage(props) {
         <ErrorMessage name="complete" />
 
         <button type="submit">save</button>
+        <button type="button" onClick={() => {
+          setIsRedirect(true);
+        }}>cancel</button>
       </Form>
     </Formik>
    </>
