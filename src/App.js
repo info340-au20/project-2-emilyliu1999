@@ -7,15 +7,37 @@ import LoginPage from './login.js';
 // import SchedulePage from './schedule.js';
 // import TaskPage from './index.js';
 
-import { Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+// FirebaseUI config
+const uiConfig = {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: true
+    },
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID, // Google login
+  ],
+  //page won't show account chooser
+  credentialHelper: 'none',
+  //use popup instead of redirect for external sign-up methods -- Google
+  signInFlow: 'popup',
+  callbacks: {
+    //Avoid redirects after sign-in
+    signInSuccessWithAuthResult: () => false,
+  },
+};
 
 export function App(props) {
   // changed from decomposed instantiation to prevent ESLint
   // from getting angry about an unused variable
   const [tasks, setTasks] = useState(props.tasks);
   const [completed, setCompleted] = useState(props.completed);
+  // state variables for error message and current user
+  const [user, setUser] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
 
   const markCompleted = (taskId) => {
     let updatedTasksArray = tasks.map((task) => {
@@ -49,12 +71,53 @@ export function App(props) {
     setCompleted(updatedCompletedArray);
   }
 
-  return (
-    <div className="content">
-      <Header />
-      <Main tasks={tasks} completed={completed} markCompleted={markCompleted} undoCompletion={undoCompletion}/>
-    </div>
-  );
+  ////////////////////
+
+  // use effect hook to wait until the component loads
+  useEffect(() => {
+    const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
+      if(firebaseUser) {
+        console.log( firebaseUser.displayName + ", you are logged in!")
+        setUser(firebaseUser);
+        setIsLoading(false);
+      } else {
+        console.log("Logged out")
+        setUser(null);
+        setIsLoading(false);
+      }
+    });
+
+    return function cleanup() {
+      authUnregisterHandler();
+    }
+  }, []) // Only run hook on first load
+
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <i className="fa fa-spinner fa-spin fa-3x" aria-label="Loading..."></i>
+      </div>
+    );
+  }
+
+  let content = null; //content to render
+
+  if(!user) { // if no user has successfully logged in, show sign in form
+    content = (
+      <div className="login-page">
+        <h2>sign in</h2>
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      </div>
+    );
+  } else {  // otherwise, show welcome page
+    content = (
+      <div className="content">
+        <Header />
+        <Main user={user} tasks={tasks} completed={completed} markCompleted={markCompleted} undoCompletion={undoCompletion}/>
+      </div>
+    );
+  }
+  return content;
 }
 
 export function Header() {
@@ -68,16 +131,22 @@ export function Header() {
 }
 
 export function SideBar() {
+  //allow user to log out
+  const handleSignOut = () => {
+    console.log("outtie");
+    firebase.auth().signOut()
+  }
+
   return (
     <div className="side-bar">
       <div className="menu">
         <ul>
           <li><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></li>
-          <li><a href="#"><i className="fas fa-home"></i>home</a></li>
+          <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><a href="#"><i className="fas fa-inbox"></i>inbox</a></li>
           <li><a href="#"><i className="far fa-check-circle"></i>my tasks</a></li>
           <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
-          <li><a href="#"><i className="fas fa-lock"></i>log out</a></li>
+          <li onClick={handleSignOut}><a href="#"><i className="fas fa-lock"></i>log out</a></li>
         </ul>
 
       </div>
@@ -93,25 +162,22 @@ export function SideBar() {
 /* <Route path="/tasks" component={TaskPage} />
 <Route path="/schedule" component={SchedulePage} /> */
 
+// React component handling routing to the proper pages
 export function Main(props) {
   return (
     <section>
       <div className="top-bar">
         <h1>flora & fauna</h1>
-
         <Switch>
           <Route exact path="/" render={(routerProps) => (
             <HomePage {...routerProps}/>
           )}/>
-          <Route path="/login" component={LoginPage} />
           <Redirect to="/" />
         </Switch>
-
       </div>
     </section>
   );
 }
-
 
 export function HomePage(props) {
   return (
@@ -121,8 +187,6 @@ export function HomePage(props) {
         <li><i className="fas fa-seedling"></i> = in progress</li>
         <li><i className="fab fa-pagelines"></i> = complete</li>
       </div>
-
-      <AddTaskButton />
 
       <TaskBox tasks={props.tasks} completed={props.completed} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
     </div>
