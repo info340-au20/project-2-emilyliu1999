@@ -134,7 +134,8 @@ export function SideBar() {
     <div className="side-bar">
       <div className="menu">
         <ul>
-          <li><i className="fa fa-bars" aria-label="menu"></i></li> {/*onClick={show}*/}
+          {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
+          <a href="javascript:void(0)" className="closebtn" onClick={CloseNav}>X</a>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock"></i>log out</NavLink></li>
@@ -148,6 +149,17 @@ export function SideBar() {
       </div>
     </div>
   );
+}
+
+// toggle hamburger menu
+export function OpenNav() {
+  document.getElementsByClassName("nav-bar").style.width = "200px";
+  document.getElementsByClassName("top-bar").style.marginLeft = "200px";
+}
+
+export function CloseNav() {
+  document.getElementsByClassName("nav-bar").style.width = "0";
+  document.getElementsByClassName("top-bar").style.marginLeft= "0";
 }
 
 // React component handling routing to the proper pages
@@ -181,6 +193,7 @@ export function Main(props) {
   return (
     <section>
       <div className="top-bar">
+        <button className="openbtn" onClick="OpenNav()"><li><i className="fa fa-bars" aria-label="menu"></i></li></button>
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path="/" render={(routerProps) => (
