@@ -3,11 +3,10 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 // import LandingPage from './landing.js';
-// import LoginPage from './login.js';
+import LoginPage from './login.js';
 // import SchedulePage from './schedule.js';
 // import TaskPage from './index.js';
 
-import 'css/style.css'; //import css file!
 import { Route, Switch, Redirect} from 'react-router-dom';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
@@ -80,14 +79,6 @@ export function SideBar() {
           <li><a href="#"><i className="far fa-calendar-alt"></i>schedule</a></li>
         </ul>
 
-        {/* <Switch>
-              <Route exact path="/" render={} />
-              <Route path="/tasks" component={TaskPage} />
-              <Route path="/home" component={LoginPage} />
-              <Route path="/schedule" component={SchedulePage} />
-              <Redirect to="/" />
-        </Switch> */}
-
       </div>
       <div className="social-media">
         <li><a href="#"><i className="fab fa-facebook-f" aria-hidden="true"></i></a></li>
@@ -103,19 +94,36 @@ export function Main(props) {
     <section>
       <div className="top-bar">
         <h1>flora & fauna</h1>
-        <div className="content">
-          <p><em>growth happens little by little, day by day.</em></p>
-          <div className="key">
-            <li><i className="fas fa-seedling"></i> = in progress</li>
-            <li><i className="fab fa-pagelines"></i> = complete</li>
-          </div>
 
-          <AddTaskButton />
+        <Switch>
+          <Route exact path="/" render={(routerProps) => (
+            <HomePage {...routerProps}/>
+          )}/>
+          <Route path="/login" component={LoginPage} />
+          <Redirect to="/" />
+        </Switch>
 
-          <TaskBox tasks={props.tasks} completed={props.completed} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
-        </div>
       </div>
     </section>
+  );
+}
+
+/* <Route path="/tasks" component={TaskPage} />
+<Route path="/schedule" component={SchedulePage} /> */
+
+export function HomePage(props) {
+  return (
+    <div className="content">
+      <p><em>growth happens little by little, day by day.</em></p>
+      <div className="key">
+        <li><i className="fas fa-seedling"></i> = in progress</li>
+        <li><i className="fab fa-pagelines"></i> = complete</li>
+      </div>
+
+      <AddTaskButton />
+
+      <TaskBox tasks={props.tasks} completed={props.completed} markCompleted={props.markCompleted} undoCompletion={props.undoCompletion}/>
+    </div>
   );
 }
 
@@ -145,7 +153,7 @@ export function TaskBox(props) {
 export function TaskCard(props) {
 
   let title;
-  if (props.tasks.length > 0) {
+  if (props.tasks && props.tasks.length > 0) {
     title = "current";
   } else {
     title = "completed";

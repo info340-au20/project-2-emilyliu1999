@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import 'css/style.css'; //import css file!
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-const loginForm = document.getElementById('login-form');
+/* const loginForm = document.getElementById('login-form');
 const loginButton = document.getElementById('login-button');
 const loginErrorMsg = document.getElementId('login-error-msg');
 
@@ -17,45 +17,66 @@ loginButton.addEventListener("click", (submit) => {
     } else {
         loginErrorMsg.style.opacity = 1;
     }
+
 })
 
-export default login;
+// Function for creating a new Firebase acount
+function createAccount(email, password) {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredentials) => {
+      let user = userCredentials.user; // access the newly created user
+      console.log('User created: '+user.uid);
+  })
+  .catch((error) => { // report any errors
+      console.log(error.message);
+  });
+} */
 
-/* 
-//FirebaseUI config
-const uiConfig = {
-  signInOptions: [
-    {
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: true
+// React component for the Login page
+export function LoginPage(props) {
+
+  // FirebaseUI config
+  const uiConfig = {
+    signInOptions: [
+      {
+        provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        requireDisplayName: true
+      },
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID, // Google login
+    ],
+    //page won't show account chooser
+    credentialHelper: 'none',
+    //use popup instead of redirect for external sign-up methods -- Google
+    signInFlow: 'popup',
+    callbacks: {
+      //Avoid redirects after sign-in
+      signInSuccessWithAuthResult: () => false,
     },
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID //Google login
-  ],
-  //page won't show account chooser
-  credentialHelper: 'none',
-  //use popup instead of redirect for external sign-up methods -- Google
-  signInFlow: 'popup',
-  callbacks: {
-    //Avoid redirects after sign-in
-    signInSuccessWithAuthResult: () => false,
-  },
-};
+  };
 
-function App(props) {
+  // state variables for error message and current user
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [user, setUser] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // use effect hook to wait until the component loads
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((firebaseUser) => {
+    const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
       if(firebaseUser) {
         console.log( firebaseUser.displayName + ", you are logged in!")
         setUser(firebaseUser)
+        setIsLoading(false);
       } else {
-        console.log("see you later!")
+        console.log("Logged out")
         setUser(null)
+        setIsLoading(false);
       }
-    })
-  })
+    });
+
+    return function cleanup() {
+      authUnregisterHandler();
+    }
+  }, []) // Only run hook on first load
 
   //allow user to log out
   const handleSignOut = () => {
@@ -63,29 +84,34 @@ function App(props) {
     firebase.auth().signOut()
   }
 
+  if (isLoading) {
+    return (
+      <div className="spinner">
+        <i className="fa fa-spinner fa-spin fa-3x" aria-label="Loading..."></i>
+      </div>
+    );
+  }
+
   let content = null; //content to render
 
-  if(!user) { //if logged out, show signup form
+  if(!user) { //if no user is successfully logged in, show signup form
     content = (
       <div className="login-page">
-        <h1>Welcome Back</h1>
+        <h2>sign in</h2>
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       </div>
     );
-  } else {
+  } else {  // otherwise, show welcome page
     content = (
       <div>
-        <WelcomeHeader user={user}>
-          {user &&
-            <button className="btn btn-warning" onClick={handleSignOut}>
-              Log Out {user.displayName}
-            </button>
-          }
-        </WelcomeHeader>
+        <p> welcome, {user.displayName}!</p>
+        <button className="btn btn-warning" onClick={handleSignOut}>
+          Log Out
+        </button>
       </div>
     )
   }
-} 
-*/
+  return content;
+}
 
-
+export default LoginPage;

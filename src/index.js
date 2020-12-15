@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/style.css';
 import App from './App.js';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -34,7 +35,9 @@ let completed = [];
 
 ReactDOM.render(
   <React.StrictMode>
-    <App tasks={tasks} completed={completed}/>
+    <Router>
+      <App tasks={tasks} completed={completed}/>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

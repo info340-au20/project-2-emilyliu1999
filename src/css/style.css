@@ -199,7 +199,7 @@ section#landing {
 
 .login {
     width: 280px;
-    position: absolute; 
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -258,7 +258,7 @@ section#landing {
     font-size: 12px;
     color: #f79895;
     border: 1px solid #e7b7b5;
-    opacity: 0; 
+    opacity: 0;
 }
 
 .btn {
@@ -350,4 +350,14 @@ section#landing {
 .list-group-item:hover {
     background-color: #95B1A5;
     color: white;
+}
+
+/* Login page */
+
+.login-page h2 {
+  text-align: center;
+}
+
+.spinner {
+  text-align: center;
 }
