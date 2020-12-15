@@ -73,7 +73,7 @@ export function App(props) {
 
   let content = null; //content to render
 
-  if(!user) { // if no user has successfully logged in, show sign in form
+  if(!user) { // if no user has successfully logged in, show landing/login page
     content = (
       <div>
         <div class="landing">

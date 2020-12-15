@@ -135,6 +135,12 @@ section .container .fas {
     margin-right: 10px;
 }
 
+section .container .fab {
+    font-size: 25px;
+    color: #CCE3DE;
+    margin-right: 10px;
+}
+
 section .container h2 {
     color: #6B9080;
 }
