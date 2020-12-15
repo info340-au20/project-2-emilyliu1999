@@ -321,12 +321,13 @@ export function TaskItem(props) {
   }
 
   const handleDeleteClick = (event) => {
+    event.stopPropagation();
     firebase.database().ref(queryString).remove();
   }
 
   return (
-      <li className="list-group-item">
-        <div onClick={handleClick}>
+      <li className="list-group-item" onClick={handleClick}>
+        <div>
           {icon}
           {taskName}
         </div>
