@@ -131,7 +131,6 @@ export function SideBar() {
         <ul>
           <li><i className="fa fa-bars" aria-label="menu"></i></li>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
-          <li><NavLink to="/inbox" activeClassName="activeLink"><i className="fas fa-inbox"></i>inbox</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink to="/signin"><i className="fas fa-lock"></i>log out</NavLink></li>
         </ul>
