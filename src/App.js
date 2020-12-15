@@ -122,17 +122,22 @@ export function Header() {
 export function SideBar() {
   //allow user to log out
   const handleSignOut = () => {
-    firebase.auth().signOut()
+    firebase.auth().signOut();
+  }
+
+  // collapse hamburger menu
+  const show = () => {
+    document.getElementsByClassName('side-bar').classList.toggle('active');
   }
 
   return (
     <div className="side-bar">
       <div className="menu">
         <ul>
-          <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li>
+          <li><i className="fa fa-bars" aria-label="menu"></i></li> {/*onClick={show}*/}
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
-          <li onClick={handleSignOut}><NavLink to="/signin"><i className="fas fa-lock"></i>log out</NavLink></li>
+          <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock"></i>log out</NavLink></li>
         </ul>
 
       </div>
@@ -144,12 +149,6 @@ export function SideBar() {
     </div>
   );
 }
-
-// collapse hamburger menu
-function show() {
-  document.getElementsByClassName('side-bar').classList.toggle('active');
-}
-
 
 // React component handling routing to the proper pages
 export function Main(props) {
@@ -211,7 +210,7 @@ export function HomePage(props) {
 
       <NavLink to="/task/new">
         <button className="key">
-          <li><i class="fas fa-plus-circle"></i>Add New Task</li>
+          <li><i className="fas fa-plus-circle"></i>Add New Task</li>
         </button>
       </ NavLink>
 
@@ -247,22 +246,55 @@ export function TaskBox(props) {
 }
 
 export function TaskCard(props) {
+  const [ isToday, setIsToday ] = useState(true);
 
   let title;
+  let navs;
+  let todayTasks;
+  let thisWeekTasks;
+
   if (props.isTaskList) {
     title = "current";
   } else {
     title = "completed";
   }
 
+  const toggleIsToday = () => {
+    setIsToday(!isToday);
+  };
+
+  navs = (
+    <li className="nav-item">
+      <a className={"nav-link" + (isToday ? " active" : "")} onClick={toggleIsToday} href="#">{"today"}</a>
+      <a className={"nav-link" + (!isToday ? " active" : "")} onClick={toggleIsToday} href="#">{"this week"}</a>
+    </li>
+  );
+
+  let currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0); // reset the time of the current date
+  let nextWeekDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 7);
+
+  let todayTaskList = [];
+  todayTaskList = props.tasks.filter(task => {
+    let taskDate = new Date(task.deadline);
+    return taskDate.getTime() === currentDate.getTime();
+  });
+
+  let thisWeekTaskList = [];
+  thisWeekTaskList = props.tasks.filter(task => {
+    let taskDate = new Date(task.deadline);
+    return (taskDate > currentDate) && (taskDate <= nextWeekDate);
+  });
+
+  todayTasks = todayTaskList;
+  thisWeekTasks = thisWeekTaskList;
+
   return (
     <div className="card mb-4">
       <div className="card-header" role="navigation">
-          <h2 className="mb-4">My Tasks</h2>
+          <h2 className="mb-4">{title}</h2>
           <ul className="nav nav-tabs card-header-tabs">
-            <li className="nav-item">
-            <a className="nav-link active" href="#">{title}</a>
-            </li>
+            {navs}
             {/* <li className="nav-item">
               <a className="nav-link disabled" href="#">Upcoming</a>
             </li>
@@ -275,10 +307,16 @@ export function TaskCard(props) {
       <div className={"card-body " + title + "-list"}>
           <div className="row">
               <div className="col-sm">
+                {(isToday ?
                   <TaskList
                     username={props.username}
-                    tasks={props.tasks}
+                    tasks={todayTasks}
                   />
+                  :
+                  <TaskList
+                    username={props.username}
+                    tasks={thisWeekTasks}
+                  />)}
               </div>
           </div>
       </div>
