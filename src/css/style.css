@@ -49,9 +49,9 @@ body {
     font-size: 36px;
     margin-left: 50px;
     cursor: pointer;
-  }
+}
   
-  .openbtn {
+.openbtn {
     font-size: 25px;
     cursor: pointer;
     background-color: #6B9080;
@@ -60,11 +60,15 @@ body {
     margin: 0 20px;
     border: none;
     width: 50px;
-  }
+}
 
-  .openbtn:hover {
+.openbtn:hover {
     background-color: #7EA091;
-  }
+}
+
+button.openbtn:active {
+    outline: none;
+}
 
  .top-bar {
     transition: margin-left .5s;
@@ -166,6 +170,10 @@ body {
     color: #CCE3DE;
     font-size: 25px;
     margin-right: 7px;
+}
+
+button.key:active {
+    outline: none;
 }
 
 section .container {

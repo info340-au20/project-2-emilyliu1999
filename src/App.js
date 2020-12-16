@@ -135,7 +135,11 @@ export function SideBar() {
       <div className="menu">
         <ul>
           {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
+<<<<<<< HEAD
           <a href="javascript:void(0)" className="closebtn" onClick={CloseNav}>X</a>
+=======
+          <a href="javascript:void(0)" className="closebtn" onClick="ToggleNav()">X</a>
+>>>>>>> 3a3d133622b36d765afcb9281f2336d819993e7d
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock"></i>log out</NavLink></li>
@@ -152,16 +156,41 @@ export function SideBar() {
 }
 
 // toggle hamburger menu
-export function OpenNav() {
-  document.getElementsByClassName("nav-bar").style.width = "200px";
-  document.getElementsByClassName("top-bar").style.marginLeft = "200px";
+// export function OpenNav() {
+//   document.getElementsByClassName("nav-bar").style.width = "200px";
+//   document.getElementsByClassName("top-bar").style.marginLeft = "200px";
+// }
+
+// export function CloseNav() {
+//   document.getElementsByClassName("nav-bar").style.width = "0";
+//   document.getElementsByClassName("top-bar").style.marginLeft= "0";
+// }
+
+export function ToggleNav() {
+  const Search = () => {
+    const [showResults, setShowResults] = useState(false)
+    const onClick = () => setShowResults(true)
+    return (
+      <div>
+        <input type="submit" value="Search" onClick={onClick} />
+        { showResults ? <Results /> : null }
+      </div>
+    )
+  }
+
+  const Results = () => (
+    <div id="results" className="search-results">
+      <SideBar />
+    </div>
+  )
 }
 
-export function CloseNav() {
-  document.getElementsByClassName("nav-bar").style.width = "0";
-  document.getElementsByClassName("top-bar").style.marginLeft= "0";
-}
+<<<<<<< HEAD
+=======
+// ReactDOM.render(<Search />, document.querySelector("#container"))
 
+
+>>>>>>> 3a3d133622b36d765afcb9281f2336d819993e7d
 // React component handling routing to the proper pages
 export function Main(props) {
   const user = {...props.user};
@@ -193,7 +222,7 @@ export function Main(props) {
   return (
     <section>
       <div className="top-bar">
-        <button className="openbtn" onClick="OpenNav()"><li><i className="fa fa-bars" aria-label="menu"></i></li></button>
+        <button className="openbtn" onClick="ToggleNav()"><li><i className="fa fa-bars" aria-label="menu"></i></li></button>
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path="/" render={(routerProps) => (
