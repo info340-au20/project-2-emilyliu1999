@@ -135,11 +135,7 @@ export function SideBar() {
       <div className="menu">
         <ul>
           {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
-<<<<<<< HEAD
-          <a href="javascript:void(0)" className="closebtn" onClick={CloseNav}>X</a>
-=======
-          <a href="javascript:void(0)" className="closebtn" onClick="ToggleNav()">X</a>
->>>>>>> 3a3d133622b36d765afcb9281f2336d819993e7d
+          <a href="javascript:void(0)" className="closebtn" onClick={ToggleNav}>X</a>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock"></i>log out</NavLink></li>
@@ -185,12 +181,9 @@ export function ToggleNav() {
   )
 }
 
-<<<<<<< HEAD
-=======
 // ReactDOM.render(<Search />, document.querySelector("#container"))
 
 
->>>>>>> 3a3d133622b36d765afcb9281f2336d819993e7d
 // React component handling routing to the proper pages
 export function Main(props) {
   const user = {...props.user};
