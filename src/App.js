@@ -216,7 +216,7 @@ export function HomePage(props) {
   return (
     <div className="content">
       <p><em>welcome, {user.displayName}</em></p>
-      <p><em>growth happens little by little, day by day.</em></p>
+      <p><em>"growth happens little by little, day by day."</em></p>
       <div className="key">
         <li><i className="fas fa-seedling"></i>= in progress</li>
         <li><i className="fab fa-pagelines"></i>= complete</li>

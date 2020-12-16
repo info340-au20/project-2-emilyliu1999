@@ -15,31 +15,20 @@ body {
     letter-spacing: 1px;
 }
 
-/* .nav-bar {
-    display: flex;
-    position: relative;
-} */
-
 .nav-bar {
     background-color: #6B9080;
 }
 
 .nav-bar .side-bar {
-    /* position: absolute;
-    width: 200px;
-    height: 100vh;
-    background: #6B9080;
-    padding: 30px 0; */
-
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 .nav-bar .side-bar .closebtn {
@@ -61,7 +50,7 @@ body {
 .top-bar .openbtn {
     font-size: 25px;
     cursor: pointer;
-    background-color: #6B9080;
+    background-color: #7EA091;
     color: white;
     padding: 10px 15px;
     margin: 0 20px;
@@ -69,7 +58,7 @@ body {
 }
 
 .top-bar .openbtn:hover {
-    background-color: #7EA091;
+    background-color: #A9C7B7;
 }
 
 .top-bar .openbtn:focus {
@@ -134,15 +123,15 @@ body {
     background: #A9C7B7;
 }
 
-
 .top-bar {
     width: 100vw;
     display: grid;
-    /* margin-left: 220px; */
+ /* margin-left: 220px;  */
 }
 
 .top-bar h1 {
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
     color: #455E53;
 }
 
@@ -157,11 +146,12 @@ body {
     width: 220px;
     padding: 15px;
     color: #5d5d5b;
-    display: inline-block;
     margin-right: 30px;
     margin-top: 30px;
     border-radius: 0;
+    transition: .3s;
 }
+
 .key li {
     display: block;
     margin: 10px;
@@ -173,6 +163,10 @@ body {
     margin-right: 7px;
 }
 
+button.key:hover {
+    color: #A4C3B2;
+}
+
 button.key:active {
     outline: none;
 }
@@ -180,17 +174,11 @@ button.key:active {
 section .container {
     margin-top: 30px;
     position: absolute;
-    display: grid;
-    margin-right: 100px;
+    display: flex;
+    flex-flow: column;
 }
 
-section .container .fas {
-    font-size: 25px;
-    color: #CCE3DE;
-    margin-right: 10px;
-}
-
-section .container .fab {
+section .container .fas, section .container .fab {
     font-size: 25px;
     color: #CCE3DE;
     margin-right: 10px;
