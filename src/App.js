@@ -83,9 +83,9 @@ export function App(props) {
 
         <section id="landing">
           <h1>let's get stuff done together.</h1>
-          <i class="fab fa-pagelines"></i>
-          <i class="fab fa-pagelines"></i>
-          <i class="fab fa-pagelines"></i>
+          <i class="fab fa-pagelines" aria-label="leaf"></i>
+          <i class="fab fa-pagelines" aria-label="leaf"></i>
+          <i class="fab fa-pagelines" aria-label="leaf"></i>
           <p>
               flora & fauna is more than just a productivity tool– we're a way of life.
               We're here to keep you on track as you bloom towards your lofiest goals, every step of the way.
@@ -131,16 +131,16 @@ export function SideBar() {
         <ul>
           {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
           <a href="javascript:void(0)" className="closebtn" onClick={ToggleNav}>X</a>
-          <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home"></i>home</NavLink></li>
-          <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt"></i>schedule</NavLink></li>
-          <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock"></i>log out</NavLink></li>
+          <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home" aria-label="home"></i>home</NavLink></li>
+          <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt" aria-label="schedule"></i>schedule</NavLink></li>
+          <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock" aria-label="lock"></i>log out</NavLink></li>
         </ul>
 
       </div>
       <div className="social-media">
-        <li><a href="#"><i className="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i className="fab fa-instagram" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i className="fab fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i className="fab fa-facebook-f" aria-label="facebook" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i className="fab fa-instagram" aria-label="instagram" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i className="fab fa-twitter" aria-label="twitter" aria-hidden="true"></i></a></li>
       </div>
     </div>
   );
@@ -218,13 +218,13 @@ export function HomePage(props) {
       <p><em>welcome, {user.displayName}</em></p>
       <p><em>"growth happens little by little, day by day."</em></p>
       <div className="key">
-        <li><i className="fas fa-seedling"></i>= in progress</li>
-        <li><i className="fab fa-pagelines"></i>= complete</li>
+        <li><i className="fas fa-seedling" aria-label="seed"></i>= in progress</li>
+        <li><i className="fab fa-pagelines" aria-label="leaf"></i>= complete</li>
       </div>
 
       <NavLink to="/task/new">
         <button className="key">
-          <li><i className="fas fa-plus-circle"></i>Add New Task</li>
+          <li><i className="fas fa-plus-circle" aria-label="circle with plus sign"></i>Add New Task</li>
         </button>
       </ NavLink>
 
@@ -363,9 +363,9 @@ export function TaskItem(props) {
   // set up initial state
   let icon;
   if (!props.complete) {
-      icon = <i className="fas fa-seedling"></i>
+      icon = <i className="fas fa-seedling" aria-label="seed"></i>
   } else {
-      icon = <i className="fab fa-pagelines"></i>
+      icon = <i className="fab fa-pagelines" aria-label="leaf"></i>
   }
 
   const handleClick = (event) => {
@@ -383,7 +383,7 @@ export function TaskItem(props) {
           {icon}
           {taskName}
         </div>
-        <i className="fa fa-window-close" onClick={handleDeleteClick} aria-hidden="true"></i>
+        <i className="fa fa-window-close" onClick={handleDeleteClick} aria-label="exit" aria-hidden="true"></i>
       </li>
   );
 }
