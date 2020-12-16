@@ -223,7 +223,7 @@ export function HomePage(props) {
       </div>
 
       <NavLink to="/task/new">
-        <button className="key">
+        <button className="key add">
           <li><i className="fas fa-plus-circle" aria-label="circle with plus sign"></i>Add New Task</li>
         </button>
       </ NavLink>
