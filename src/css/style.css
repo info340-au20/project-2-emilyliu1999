@@ -190,11 +190,30 @@ section .container .fas, section .container .fab {
 }
 
 section .container h2 {
-    color: #6B9080;
+    color: #F6FFF8;
+    padding: 10px;
 }
 
 .card-body li {
     color: #6B9080;
+}
+
+.card-header {
+  background-color: #A4C3B2;
+}
+
+.nav-link {
+  color: white;
+  display: inline;
+}
+
+.nav-link:hover {
+  color: #4E6A5E;
+  border: none;
+}
+
+.nav-link:active {
+  outline: none;
 }
 
 /* LANDING PG */
