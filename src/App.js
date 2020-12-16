@@ -4,6 +4,7 @@ import 'firebase/auth';
 
 import TaskDetailsPage from './taskDetails.js';
 // import SchedulePage from './schedule.js';
+// import InboxPage from './index.js';
 
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 
