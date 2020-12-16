@@ -82,10 +82,10 @@ export function TaskDetailsPage(props) {
          }}
          validationSchema={Yup.object({
            taskName: Yup.string()
-             .required('Required'),
+             .required('*Required*'),
            taskDescription: Yup.string()
-             .required('Required'),
-           deadline: Yup.string().required('Required'),
+             .required('*Required*'),
+           deadline: Yup.string().required('*Required*'),
            complete: Yup.string()
          })}
          onSubmit={(values, { setSubmitting }) => {

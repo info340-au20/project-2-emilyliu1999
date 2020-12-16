@@ -423,6 +423,11 @@ section#landing {
 
 /* Form
 ––––––––––––––––––––––––––––––––– */
+form {
+  color: #6B9080;
+  margin-left: 20px;
+}
+
 label {
   font-weight: bold;
   display: flex;
@@ -433,9 +438,9 @@ input[type="text"],
 input[type="number"] {
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
-  border: 2px solid var(--gray-200);
-  background-color: var(--gray-100);
-  color: var(--gray-800);
+  border: 2px solid #6B9080;
+  background-color: #EAF4F4;
+  color: #333533;
   border-radius: 10px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -472,7 +477,7 @@ textarea {
   -moz-appearance: none;
   appearance: none;
   font-size: 1rem;
-  border: 2px solid var(--gray-200);
+  border: 2px solid #6B9080;
   color: var(--gray-700);
   border-radius: 10px;
   resize: vertical;
