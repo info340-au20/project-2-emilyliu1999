@@ -125,11 +125,6 @@ export function SideBar() {
     firebase.auth().signOut();
   }
 
-  // collapse hamburger menu
-  const show = () => {
-    document.getElementsByClassName('side-bar').classList.toggle('active');
-  }
-
   return (
     <div className="side-bar">
       <div className="menu">
@@ -152,33 +147,17 @@ export function SideBar() {
 }
 
 // toggle hamburger menu
-// export function OpenNav() {
-//   document.getElementsByClassName("nav-bar").style.width = "200px";
-//   document.getElementsByClassName("top-bar").style.marginLeft = "200px";
-// }
-
-// export function CloseNav() {
-//   document.getElementsByClassName("nav-bar").style.width = "0";
-//   document.getElementsByClassName("top-bar").style.marginLeft= "0";
-// }
-
 export function ToggleNav() {
-  const Search = () => {
-    const [showResults, setShowResults] = useState(false)
-    const onClick = () => setShowResults(true)
+  const Show = () => {
+    const [sideBar, setSideBar] = useState(false)
+    const showSideBar = () => setSideBar(!sideBar);
+    
     return (
       <div>
-        <input type="submit" value="Search" onClick={onClick} />
-        { showResults ? <Results /> : null }
+        { sideBar ? <SideBar onClick={showSideBar} /> : null }
       </div>
     )
   }
-
-  const Results = () => (
-    <div id="results" className="search-results">
-      <SideBar />
-    </div>
-  )
 }
 
 // ReactDOM.render(<Search />, document.querySelector("#container"))
@@ -215,7 +194,7 @@ export function Main(props) {
   return (
     <section>
       <div className="top-bar">
-        <button className="openbtn" onClick="ToggleNav()"><li><i className="fa fa-bars" aria-label="menu"></i></li></button>
+        <button className="openbtn" onClick="ToggleNav()"><i className="fa fa-bars" aria-label="menu"></i></button>
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path="/" render={(routerProps) => (
@@ -289,9 +268,9 @@ export function TaskCard(props) {
   let thisWeekTasks;
 
   if (props.isTaskList) {
-    title = "current";
+    title = "current tasks";
   } else {
-    title = "completed";
+    title = "completed tasks";
   }
 
   const toggleIsToday = () => {
