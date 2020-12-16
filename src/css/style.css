@@ -175,7 +175,8 @@ section .container {
     margin-top: 30px;
     position: absolute;
     display: flex;
-    flex-flow: column;
+    flex-direction: row;
+    justify-content: center;
 }
 
 section .container .fas, section .container .fab {
