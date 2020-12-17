@@ -55,15 +55,11 @@ export function TaskDetailsPage(props) {
         }
       }
     }).then(() => setIsLoading(false));
-<<<<<<< HEAD
 
     return function cleanup() {
       queryRef.off();
     }
-  }, []);
-=======
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
->>>>>>> a60a58895bd53160839c62aafd4958f86d105a65
 
   // if there has just been a change, redirect to the home page
   if (isRedirect) {
