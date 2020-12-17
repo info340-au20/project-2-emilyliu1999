@@ -50,7 +50,7 @@ export function TaskDetailsPage(props) {
         }
       }
     }).then(() => setIsLoading(false));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // if there has just been a change, redirect to the home page
   if (isRedirect) {
