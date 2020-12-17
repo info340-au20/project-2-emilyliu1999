@@ -21,7 +21,9 @@ export function SchedulePage(props) {
 
     return (
         <div className='content'>
-            <p>on this page, you may select dates on the calendar to see what tasks are due on any given day!</p>
+            <p><em>'the most beautiful flower is one that blooms in adversity.'</em></p>
+            <p>Select dates on the calendar to see what tasks are due on any given day.
+            Click on a task to view and edit details.</p>
             <div className='row'>
                 <div className='row'>
                     <div className='col d-flex'>
