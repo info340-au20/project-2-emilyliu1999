@@ -15,8 +15,12 @@ export function TaskDetailsPage(props) {
   const { taskKey } = useParams();
   const queryString = props.user.displayName + '/tasks/' + taskKey;
 
-  const redirectToHome = () => {
-    return <Redirect exact to='/' />;
+  const redirectTo = () => {
+    if (taskKey === 'new') {
+      return <Redirect push exact to='/' />;
+    } else {
+      return <Redirect push to='/schedule' />;
+    }
   };
 
   const addNewTask = (taskKey, task) => {
@@ -43,18 +47,23 @@ export function TaskDetailsPage(props) {
   }
 
   useEffect(() => { // if not creating a new task, check if the task exists
-    firebase.database().ref(queryString).once('value', function(snapshot) {
+    const queryRef = firebase.database().ref(queryString);
+    queryRef.once('value', function(snapshot) {
       if (taskKey !== 'new') {
         if (snapshot.val()) {
           setCurrentTask(snapshot.val());
         }
       }
     }).then(() => setIsLoading(false));
+
+    return function cleanup() {
+      queryRef.off();
+    }
   }, []);
 
   // if there has just been a change, redirect to the home page
   if (isRedirect) {
-    return redirectToHome();
+    return redirectTo();
   }
 
   if (isLoading) {

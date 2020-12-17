@@ -200,7 +200,7 @@ export function Main(props) {
           <Route path='/schedule' render={(routerProps) => (
             <SchedulePage tasks={tasks}/>
           )}/>
-          <Redirect exact to='/' />
+          <Redirect push exact to='/' />
         </Switch>
       </div>
     </section>
@@ -209,7 +209,6 @@ export function Main(props) {
 
 export function HomePage(props) {
   const user = {...props.user};
-  const tasks = [...props.tasks];
   return (
     <div className='content'>
       <p><em>welcome, {user.displayName}</em></p>
@@ -229,7 +228,7 @@ export function HomePage(props) {
         <p>Click on already completed tasks again to mark as current. The grind never stops!</p>
       </div>
 
-      
+
 
       <TaskBox username={user.displayName} tasks={props.tasks} />
     </div>
