@@ -139,9 +139,9 @@ export function SideBar(props) {
 
       </div>
       <div className='social-media'>
-        <li><a href='/#'><i className='fab fa-facebook-f' aria-label='facebook' aria-hidden='true'></i></a></li>
-        <li><a href='/#'><i className='fab fa-instagram' aria-label='instagram' aria-hidden='true'></i></a></li>
-        <li><a href='/#'><i className='fab fa-twitter' aria-label='twitter' aria-hidden='true'></i></a></li>
+        <li><a href='https://facebook.com/'><i className='fab fa-facebook-f' aria-label='facebook' aria-hidden='true'></i></a></li>
+        <li><a href='https://instagram.com/'><i className='fab fa-instagram' aria-label='instagram' aria-hidden='true'></i></a></li>
+        <li><a href='https://twitter.com/'><i className='fab fa-twitter' aria-label='twitter' aria-hidden='true'></i></a></li>
       </div>
     </div>
   );
