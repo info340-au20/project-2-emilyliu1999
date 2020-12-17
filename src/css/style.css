@@ -375,6 +375,7 @@ form label {
   font-style: italic;
 }
 
+input[type="email"],
 input[type="text"],
 input[type="number"] {
   padding: 0.65rem 0.5rem;
@@ -389,6 +390,7 @@ input[type="number"] {
   margin-right: 1rem;
 }
 
+input[type="email"],
 input[type="text"],
 input[type="number"],
 textarea,
@@ -709,6 +711,7 @@ button[type="reset"]:hover {
 }
 
 /* custom */
+input[type="email"],
 input[type="text"],
 input[type="number"],
 textarea,
