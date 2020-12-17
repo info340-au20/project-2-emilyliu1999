@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import { Formik, Field, Form, ErrorMessage, useFormikContext } from 'formik';
 import * as Yup from 'yup';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import { Redirect, useParams } from 'react-router-dom';
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 // React component for the detailed page view of a task
 export function TaskDetailsPage(props) {
@@ -13,15 +13,15 @@ export function TaskDetailsPage(props) {
   const [isRedirect, setIsRedirect] = useState(false);
 
   const { taskKey } = useParams();
-  const queryString = props.user.displayName + "/tasks/" + taskKey;
+  const queryString = props.user.displayName + '/tasks/' + taskKey;
 
   const redirectToHome = () => {
-    return <Redirect exact to="/" />;
+    return <Redirect exact to='/' />;
   };
 
   const addNewTask = (taskKey, task) => {
-    if (taskKey === "new") {
-      firebase.database().ref(props.user.displayName + "/tasks").push(task);  // push a new task
+    if (taskKey === 'new') {
+      firebase.database().ref(props.user.displayName + '/tasks').push(task);  // push a new task
     } else {
       firebase.database().ref(queryString).set(task); // overwrite specifically the existing task
     }
@@ -43,7 +43,7 @@ export function TaskDetailsPage(props) {
 
   useEffect(() => { // if not creating a new task, check if the task exists
     firebase.database().ref(queryString).once('value', function(snapshot) {
-      if (taskKey !== "new") {
+      if (taskKey !== 'new') {
         if (snapshot.val()) {
           setCurrentTask(snapshot.val());
         }
@@ -58,14 +58,14 @@ export function TaskDetailsPage(props) {
 
   if (isLoading) {
     return (
-      <div className="spinner">
-        <i className="fa fa-spinner fa-spin fa-3x" aria-label="Loading..."></i>
+      <div className='spinner'>
+        <i className='fa fa-spinner fa-spin fa-3x' aria-label='Loading...'></i>
       </div>
     );
   }
 
   // error message for when the task is not found in the database
-  if (taskKey !== "new" && !currentTask) {
+  if (taskKey !== 'new' && !currentTask) {
     return (
       <h2>Task not found.</h2>
     );
@@ -75,9 +75,9 @@ export function TaskDetailsPage(props) {
     <>
       <Formik
          initialValues={{
-           taskName: (currentTask ? currentTask.name : ""),
-           taskDescription: (currentTask ? currentTask.desc : ""),
-           deadline: (currentTask ? Date.parse(currentTask.deadline) : ""),
+           taskName: (currentTask ? currentTask.name : ''),
+           taskDescription: (currentTask ? currentTask.desc : ''),
+           deadline: (currentTask ? Date.parse(currentTask.deadline) : ''),
            complete: (currentTask ? currentTask.complete : false)
          }}
          validationSchema={Yup.object({
@@ -99,24 +99,24 @@ export function TaskDetailsPage(props) {
       >
 
       <Form>
-        <label htmlFor="taskName">Task Name</label>
-        <Field name="taskName" type="text" />
-        <ErrorMessage name="taskName" />
+        <label htmlFor='taskName'>Task Name</label>
+        <Field name='taskName' type='text' />
+        <ErrorMessage name='taskName' />
 
-        <label htmlFor="taskDescription">Task Description</label>
-        <Field name="taskDescription" as="textarea" />
-        <ErrorMessage name="taskDescription" />
+        <label htmlFor='taskDescription'>Task Description</label>
+        <Field name='taskDescription' as='textarea' />
+        <ErrorMessage name='taskDescription' />
 
-        <label htmlFor="deadline">Deadline</label>
-        <DatePickerField name="deadline" />
-        <ErrorMessage name="deadline" />
+        <label htmlFor='deadline'>Deadline</label>
+        <DatePickerField name='deadline' />
+        <ErrorMessage name='deadline' />
 
-        <label htmlFor="complete">Complete?</label>
-        <Field name="complete" type="checkbox" />
-        <ErrorMessage name="complete" />
+        <label htmlFor='complete'>Complete?</label>
+        <Field name='complete' type='checkbox' />
+        <ErrorMessage name='complete' />
 
-        <button type="submit">save</button>
-        <button type="button" onClick={() => {
+        <button type='submit'>save</button>
+        <button type='button' onClick={() => {
           setIsRedirect(true);
         }}>cancel</button>
       </Form>
