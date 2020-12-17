@@ -216,6 +216,10 @@ section .container h2 {
     padding: 10px;
 }
 
+.card {
+  width: 30em;
+}
+
 .card-body li {
     color: #6B9080;
 }
