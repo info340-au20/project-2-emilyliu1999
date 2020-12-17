@@ -35,6 +35,7 @@ export function TaskDetailsPage(props) {
       <DatePicker
         name={field.name}
         value={field.value}
+        autoComplete={"off"}
         selected={(field.value && new Date(field.value)) || null}
         onChange={value => formik.setFieldValue(name, value)}
       />
@@ -100,11 +101,11 @@ export function TaskDetailsPage(props) {
 
       <Form>
         <label htmlFor='taskName'>Task Name</label>
-        <Field name='taskName' type='text' />
+        <Field name='taskName' type='text' autoComplete="off" />
         <ErrorMessage name='taskName' />
 
         <label htmlFor='taskDescription'>Task Description</label>
-        <Field name='taskDescription' as='textarea' />
+        <Field name='taskDescription' as='textarea' autoComplete="off" />
         <ErrorMessage name='taskDescription' />
 
         <label htmlFor='deadline'>Deadline</label>
