@@ -7,12 +7,12 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 const loginButton = document.getElementById('login-button');
 const loginErrorMsg = document.getElementId('login-error-msg');
 
-loginButton.addEventListener("click", (submit) => {
+loginButton.addEventListener('click', (submit) => {
     submit.preventDefault();
     const username = loginForm.username.value;
     const password = loginForm.password.value;
 
-    if (username == "user" && password == "web_dev") {
+    if (username == 'user' && password == 'web_dev') {
         location.reload();
     } else {
         loginErrorMsg.style.opacity = 1;
@@ -62,11 +62,11 @@ export function LoginPage(props) {
   useEffect(() => {
     const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
       if(firebaseUser) {
-        console.log( firebaseUser.displayName + ", you are logged in!")
+        console.log( firebaseUser.displayName + ', you are logged in!')
         setUser(firebaseUser);
         setIsLoading(false);
       } else {
-        console.log("Logged out")
+        console.log('Logged out')
         setUser(null);
         setIsLoading(false);
       }
@@ -84,8 +84,8 @@ export function LoginPage(props) {
 
   if (isLoading) {
     return (
-      <div className="spinner">
-        <i className="fa fa-spinner fa-spin fa-3x" aria-label="Loading..."></i>
+      <div className='spinner'>
+        <i className='fa fa-spinner fa-spin fa-3x' aria-label='Loading...'></i>
       </div>
     );
   }
@@ -94,7 +94,7 @@ export function LoginPage(props) {
 
   if(!user) { //if no user is successfully logged in, show signup form
     content = (
-      <div className="login-page">
+      <div className='login-page'>
         <h2>sign in</h2>
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       </div>
@@ -103,7 +103,7 @@ export function LoginPage(props) {
     content = (
       <div>
         <p> welcome, {user.displayName}!</p>
-        <button className="btn btn-warning" onClick={handleSignOut}>
+        <button className='btn btn-warning' onClick={handleSignOut}>
           Log Out
         </button>
       </div>

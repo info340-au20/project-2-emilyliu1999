@@ -49,11 +49,11 @@ export function App(props) {
   useEffect(() => {
     const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
       if(firebaseUser) {
-        console.log( firebaseUser.displayName + ", you are logged in!")
+        console.log( firebaseUser.displayName + ', you are logged in!')
         setUser(firebaseUser);
         setIsLoading(false);
       } else {
-        console.log("Logged out")
+        console.log('Logged out')
         setUser(null);
         setIsLoading(false);
       }
@@ -66,8 +66,8 @@ export function App(props) {
 
   if (isLoading) {
     return (
-      <div className="spinner">
-        <i className="fa fa-spinner fa-spin fa-3x" aria-label="Loading..."></i>
+      <div className='spinner'>
+        <i className='fa fa-spinner fa-spin fa-3x' aria-label='Loading...'></i>
       </div>
     );
   }
@@ -77,21 +77,21 @@ export function App(props) {
   if(!user) { // if no user has successfully logged in, show landing/login page
     content = (
       <div>
-        <div class="landing">
+        <div class='landing'>
             <h1>flora & fauna</h1>
         </div>
 
-        <section id="landing">
+        <section id='landing'>
           <h1>let's get stuff done together.</h1>
-          <i class="fab fa-pagelines" aria-label="leaf"></i>
-          <i class="fab fa-pagelines" aria-label="leaf"></i>
-          <i class="fab fa-pagelines" aria-label="leaf"></i>
+          <i class='fab fa-pagelines' aria-label='leaf'></i>
+          <i class='fab fa-pagelines' aria-label='leaf'></i>
+          <i class='fab fa-pagelines' aria-label='leaf'></i>
           <p>
               flora & fauna is more than just a productivity tool– we're a way of life.
               We're here to keep you on track as you bloom towards your lofiest goals, every step of the way.
           </p>
 
-          <div class="login-page">
+          <div class='login-page'>
             <h2>sign in</h2>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
           </div>
@@ -100,7 +100,7 @@ export function App(props) {
     );
   } else {  // otherwise, show welcome page
     content = (
-      <div className="content">
+      <div className='content'>
         <Header />
         <Main user={user} tasks={tasks} completed={completed} taskUpdate={handleTaskUpdate}/>
       </div>
@@ -112,7 +112,7 @@ export function App(props) {
 export function Header() {
   return (
     <header>
-      <div className="nav-bar">
+      <div className='nav-bar'>
         <SideBar />
       </div>
     </header>
@@ -126,21 +126,21 @@ export function SideBar() {
   }
 
   return (
-    <div className="side-bar">
-      <div className="menu">
+    <div className='side-bar'>
+      <div className='menu'>
         <ul>
-          {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
-          <a href="javascript:void(0)" className="closebtn" onClick={ToggleNav}>X</a>
-          <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home" aria-label="home"></i>home</NavLink></li>
-          <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt" aria-label="schedule"></i>schedule</NavLink></li>
-          <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock" aria-label="lock"></i>log out</NavLink></li>
+          {/* <li><i className='fa fa-bars' aria-label='menu' onClick='show()'></i></li> */}
+          <a href='javascript:void(0)' className='closebtn' onClick={ToggleNav}>X</a>
+          <li><NavLink exact to='/' activeClassName='activeLink'><i className='fas fa-home' aria-label='home'></i>home</NavLink></li>
+          <li><NavLink to='/schedule' activeClassName='activeLink'><i className='far fa-calendar-alt' aria-label='schedule'></i>schedule</NavLink></li>
+          <li onClick={handleSignOut}><NavLink exact to='/'><i className='fas fa-lock' aria-label='lock'></i>log out</NavLink></li>
         </ul>
 
       </div>
-      <div className="social-media">
-        <li><a href="#"><i className="fab fa-facebook-f" aria-label="facebook" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i className="fab fa-instagram" aria-label="instagram" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i className="fab fa-twitter" aria-label="twitter" aria-hidden="true"></i></a></li>
+      <div className='social-media'>
+        <li><a href='#'><i className='fab fa-facebook-f' aria-label='facebook' aria-hidden='true'></i></a></li>
+        <li><a href='#'><i className='fab fa-instagram' aria-label='instagram' aria-hidden='true'></i></a></li>
+        <li><a href='#'><i className='fab fa-twitter' aria-label='twitter' aria-hidden='true'></i></a></li>
       </div>
     </div>
   );
@@ -160,14 +160,14 @@ export function ToggleNav() {
   }
 }
 
-// ReactDOM.render(<Search />, document.querySelector("#container"))
+// ReactDOM.render(<Search />, document.querySelector('#container'))
 
 
 // React component handling routing to the proper pages
 export function Main(props) {
   const user = {...props.user};
   const tasks = [...props.tasks];
-  const taskRef = firebase.database().ref(user.displayName + "/tasks");
+  const taskRef = firebase.database().ref(user.displayName + '/tasks');
 
   useEffect(() => {
     let tasks = [];
@@ -190,23 +190,23 @@ export function Main(props) {
   }, []);
 
 
-  // <Route path="/schedule" component={SchedulePage} />
+  // <Route path='/schedule' component={SchedulePage} />
   return (
     <section>
-      <div className="top-bar">
-        <button className="openbtn" onClick={ToggleNav}><i className="fa fa-bars" aria-label="menu"></i></button>
+      <div className='top-bar'>
+        <button className='openbtn' onClick={ToggleNav}><i className='fa fa-bars' aria-label='menu'></i></button>
         <h1>flora & fauna</h1>
         <Switch>
-          <Route exact path="/" render={(routerProps) => (
+          <Route exact path='/' render={(routerProps) => (
             <HomePage user={user} tasks={tasks} />
           )}/>
-          <Route path="/task/:taskKey" render={(routerProps) => (
+          <Route path='/task/:taskKey' render={(routerProps) => (
             <TaskDetailsPage user={user} />
           )}/>
-          <Route path="/schedule" render={(routerProps) => (
+          <Route path='/schedule' render={(routerProps) => (
             <SchedulePage tasks={tasks}/>
           )}/>
-          <Redirect exact to="/" />
+          <Redirect exact to='/' />
         </Switch>
       </div>
     </section>
@@ -217,17 +217,17 @@ export function HomePage(props) {
   const user = {...props.user};
   const tasks = [...props.tasks];
   return (
-    <div className="content">
+    <div className='content'>
       <p><em>welcome, {user.displayName}</em></p>
-      <p><em>"growth happens little by little, day by day."</em></p>
-      <div className="key">
-        <li><i className="fas fa-seedling" aria-label="seed"></i>= in progress</li>
-        <li><i className="fab fa-pagelines" aria-label="leaf"></i>= complete</li>
+      <p><em>'growth happens little by little, day by day.'</em></p>
+      <div className='key'>
+        <li><i className='fas fa-seedling' aria-label='seed'></i>= in progress</li>
+        <li><i className='fab fa-pagelines' aria-label='leaf'></i>= complete</li>
       </div>
 
-      <NavLink to="/task/new">
-        <button className="key add">
-          <li><i className="fas fa-plus-circle" aria-label="circle with plus sign"></i>Add New Task</li>
+      <NavLink to='/task/new'>
+        <button className='key add'>
+          <li><i className='fas fa-plus-circle' aria-label='circle with plus sign'></i>Add New Task</li>
         </button>
       </ NavLink>
 
@@ -249,12 +249,12 @@ export function TaskBox(props) {
   });
 
   return (
-    <div className="container">
-        <div className="row">
-            <div className="col d-flex">
+    <div className='container'>
+        <div className='row'>
+            <div className='col d-flex'>
                 <TaskCard username={props.username} tasks={taskList} isTaskList={true}/>
             </div>
-            <div className="col d-flex">
+            <div className='col d-flex'>
                 <TaskCard username={props.username} tasks={completedList} isTaskList={false}/>
             </div>
         </div>
@@ -271,9 +271,9 @@ export function TaskCard(props) {
   let thisWeekTasks;
 
   if (props.isTaskList) {
-    title = "current tasks";
+    title = 'current tasks';
   } else {
-    title = "completed tasks";
+    title = 'completed tasks';
   }
 
   const toggleIsToday = () => {
@@ -281,9 +281,9 @@ export function TaskCard(props) {
   };
 
   navs = (
-    <li className="nav-item">
-      <a className={"nav-link" + (isToday ? " active" : "")} onClick={toggleIsToday} href="#">{"today"}</a>
-      <a className={"nav-link" + (!isToday ? " active" : "")} onClick={toggleIsToday} href="#">{"this week"}</a>
+    <li className='nav-item'>
+      <a className={'nav-link' + (isToday ? ' active' : '')} onClick={toggleIsToday} href='#'>{'today'}</a>
+      <a className={'nav-link' + (!isToday ? ' active' : '')} onClick={toggleIsToday} href='#'>{'this week'}</a>
     </li>
   );
 
@@ -307,17 +307,17 @@ export function TaskCard(props) {
   thisWeekTasks = thisWeekTaskList;
 
   return (
-    <div className="card mb-4">
-      <div className="card-header" role="navigation">
-          <h2 className="mb-4">{title}</h2>
-          <ul className="nav nav-tabs card-header-tabs">
+    <div className='card mb-4'>
+      <div className='card-header' role='navigation'>
+          <h2 className='mb-4'>{title}</h2>
+          <ul className='nav nav-tabs card-header-tabs'>
             {navs}
           </ul>
       </div>
 
-      <div className={"card-body " + title + "-list"}>
-          <div className="row">
-              <div className="col-sm">
+      <div className={'card-body ' + title + '-list'}>
+          <div className='row'>
+              <div className='col-sm'>
                 {(isToday ?
                   <TaskList
                     username={props.username}
@@ -347,7 +347,7 @@ export function TaskList(props) {
   }
 
   return (
-      <ul className="list-group list-group-flush">
+      <ul className='list-group list-group-flush'>
         {taskItems}
       </ul>
   );
@@ -355,14 +355,14 @@ export function TaskList(props) {
 
 export function TaskItem(props) {
   let taskName = props.name;
-  let queryString = props.username + "/tasks/" + props.queryKey;
+  let queryString = props.username + '/tasks/' + props.queryKey;
 
   // set up initial state
   let icon;
   if (!props.complete) {
-      icon = <i className="fas fa-seedling" aria-label="seed"></i>
+      icon = <i className='fas fa-seedling' aria-label='seed'></i>
   } else {
-      icon = <i className="fab fa-pagelines" aria-label="leaf"></i>
+      icon = <i className='fab fa-pagelines' aria-label='leaf'></i>
   }
 
   const handleClick = (event) => {
@@ -375,12 +375,12 @@ export function TaskItem(props) {
   }
 
   return (
-      <li className="list-group-item" onClick={handleClick}>
+      <li className='list-group-item' onClick={handleClick}>
         <div>
           {icon}
           {taskName}
         </div>
-        <i className="fa fa-window-close" onClick={handleDeleteClick} aria-label="exit" aria-hidden="true"></i>
+        <i className='fa fa-window-close' onClick={handleDeleteClick} aria-label='exit' aria-hidden='true'></i>
       </li>
   );
 }
