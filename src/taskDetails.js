@@ -78,7 +78,7 @@ export function TaskDetailsPage(props) {
          initialValues={{
            taskName: (currentTask ? currentTask.name : ''),
            taskDescription: (currentTask ? currentTask.desc : ''),
-           deadline: (currentTask ? Date.parse(currentTask.deadline) : ''),
+           deadline: (currentTask ? new Date(currentTask.deadline) : ''),
            complete: (currentTask ? currentTask.complete : false)
          }}
          validationSchema={Yup.object({
