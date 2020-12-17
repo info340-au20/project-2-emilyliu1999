@@ -50,7 +50,7 @@ function CurrentTaskCard(props) {
               <h2 className='mb-4'>{date}</h2>
               <ul className='nav nav-tabs card-header-tabs'>
                 <li className='nav-item'>
-                    <a className={'nav-link active'}>{'tasks'}</a>
+                    <a className={'nav-link active'} href='/#'>{'tasks'}</a>
                 </li>
               </ul>
           </div>
