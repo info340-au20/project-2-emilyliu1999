@@ -1,0 +1,798 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    text-transform: lowercase;
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+
+.nav-bar {
+    display: flex;
+    position: relative;
+}
+
+.nav-bar .side-bar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #6B9080;
+    padding: 30px 0;
+}
+
+.nav-bar .side-bar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.top-bar {
+    transition: margin-left .5s;
+    padding: 16px;
+    border: none;
+    outline: none;
+    margin-left: 0;
+}
+
+.top-bar .openbtn {
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #7EA091;
+    color: white;
+    padding: 10px 15px;
+    margin: 0 20px;
+    width: 50px;
+    border: none;
+    border-radius: 8px;
+}
+
+.top-bar .openbtn:hover {
+    background-color: #A9C7B7;
+    transition: 0.4s;
+}
+
+.top-bar .openbtn:focus {
+    outline: none;
+}
+
+.menu-toggled-margin {
+  margin-left: 225px;
+}
+
+.hidden-btn {
+  opacity: 0;
+}
+
+.nav-bar .menu ul li {
+    padding: 15px;
+    margin-left: 15px;
+}
+
+.nav-bar .menu ul li a {
+    color: #EAF4F4;
+    display: block;
+}
+
+.menu ul li .fas, .far {
+    width: 25px;
+    color: #EAF4F4;
+}
+
+.nav-bar .menu .closebtn {
+    color: #CCE3DE;
+    text-decoration: none;
+}
+
+.nav-bar .menu .closebtn:hover {
+    color: white;
+}
+
+.nav-bar .menu ul li:hover {
+    background: #95B1A5;
+}
+
+.nav-bar .menu ul li:hover a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar .side-bar .social-media {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.nav-bar .side-bar .social-media a {
+    display: block;
+    width: 40px;
+    background: #7EA091;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 5px;
+    color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.nav-bar .side-bar .social-media a:hover {
+    background: #A9C7B7;
+}
+
+.top-bar {
+    width: 100vw;
+    display: grid;
+}
+
+.top-bar h1 {
+    padding-top: 20px;
+    padding-left: 20px;
+    color: #455E53;
+}
+
+.top-bar .content {
+    margin: 20px;
+    color: #5d5d5b;
+    line-height: 25px;
+}
+
+.key {
+    border: 1px solid #A9C7B7;
+    width: 250px;
+    padding: 15px;
+    color: #5d5d5b;
+    margin-right: 30px;
+    margin-top: 15px;
+    border-radius: 0;
+    transition: .3s;
+}
+
+.key li {
+    display: block;
+    margin: 10px;
+}
+
+.key li i {
+    color: #CCE3DE;
+    font-size: 25px;
+    margin-right: 7px;
+}
+
+.key p {
+  padding-top: 10px;
+}
+
+button.add {
+  background-color: white;
+}
+
+button.add:hover {
+  background-color: #A9C7B7;
+  color: white;
+  cursor: pointer;
+}
+
+button.add:focus {
+  outline: none;
+}
+
+.content {
+  display: grid;
+}
+
+.content p {
+  margin-bottom: 30px;
+}
+
+section .container {
+    margin-top: 110px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    margin-left: 300px;
+}
+
+section .list-group-item .fas, section .list-group-item .fab {
+    font-size: 25px;
+    color: #CCE3DE;
+    margin-right: 10px;
+}
+
+section .container h2 {
+    color: white;
+    padding: 10px;
+}
+
+.card {
+  width: 30em;
+}
+
+.card-body li {
+    color: #6B9080;
+}
+
+.card-header {
+  background-color: #A4C3B2;
+  color: white;
+}
+
+.nav-link {
+  color: #F6FFF8;
+  display: inline;
+}
+
+.nav-link:hover {
+  color: #4E6A5E;
+  border: none;
+}
+
+.nav-link:active {
+  outline: none;
+}
+
+/* LANDING PG */
+.landing {
+    background: #7EA091;
+    padding: 30px;
+    color: white;
+}
+
+section#landing {
+    color: #4E6A5E;
+    display: block;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding: 10%;
+}
+
+#landing h1 {
+    font-size: 2.5rem;
+}
+
+#landing p {
+    margin: auto;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+#landing i {
+    color: #A4C3B2;
+    font-size: 3rem;
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+}
+
+.login {
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login h1 {
+    margin-bottom: 30px;
+    padding: 13px 0;
+    font-size: 3rem;
+    color: #455E53;
+    text-align: center;
+}
+
+.textbox {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #A4C3B2;
+}
+
+.textbox i {
+    width: 25px;
+    color: #95B1A5;
+    text-align: center;
+}
+
+.textbox input {
+    border: none;
+    outline: none;
+    background: none;
+    color: #7EA091;
+    font-size: 18px;
+    margin: 0 10px;
+    width: 80%;
+}
+
+.btn {
+    width: 80%;
+    display: block;
+    margin: 30px auto;
+    background: none;
+    border: 1.5px solid #6B9080;
+    border-radius: 5px;
+    color: #4E6A5E;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    background-color: #7EA091;
+    color: white;
+    border: none;
+}
+
+#landing .btn {
+    width: 20%;
+}
+
+.list-group-item:hover {
+    background-color: #95B1A5;
+    color: white;
+}
+
+.completed-list {
+  text-decoration: line-through;
+}
+
+/* Login page */
+
+.login-page {
+  margin-top: 75px;
+}
+
+.login-page h2 {
+  text-align: center;
+}
+
+.spinner {
+  text-align: center;
+}
+
+/* Form page (inspired by https://codesandbox.io/s/formik-v2-tutorial-start-s04yr?file=/src/styles.css) */
+
+/* Form
+––––––––––––––––––––––––––––––––– */
+form {
+  color: #6B9080;
+  margin: auto;
+}
+
+form label {
+  font-weight: bold;
+  display: flex;
+  font-style: italic;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="number"] {
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #A9C7B7;
+  color: #646864;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 400px;
+}
+
+select {
+  margin: 0;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--gray-200);
+  border-radius: 10px;
+  color: var(--gray-700);
+  height: auto;
+  background-color: var(--gray-100);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125.304 125.304"><path d="M62.652 103.895L0 21.41h125.304" fill="%23343334"/></svg>');
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  background-position: center right 0.5rem;
+}
+
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 1rem;
+  border: 2px solid #A9C7B7;
+  border-radius: 3px;
+  resize: vertical;
+  background-color: var(--gray-100);
+  box-sizing: border-box;
+  padding: 0.65rem 0.5rem;
+  margin-right: 1rem;
+  /* font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
+    "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
+    sans-serif; */
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-bottom: 2px solid #7EA091;
+}
+
+textarea:focus {
+  outline: none;
+  border: 2px solid #7EA091;
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border: 2px solid #ff7d87;
+  box-shadow: none;
+}
+
+input[type="checkbox"] {
+  display: grid;
+  height: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #6B9080;
+  width: 1rem;
+  background-color: white;
+  align-self: center;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="78.369" height="78.369" viewBox="0 0 78.369 78.369"><path fill="gray" d="M78.05 19.015l-48.592 48.59c-.428.43-1.12.43-1.548 0L.32 40.016c-.427-.426-.427-1.12 0-1.547l6.704-6.704c.428-.427 1.12-.427 1.548 0l20.113 20.112 41.113-41.113c.43-.427 1.12-.427 1.548 0l6.703 6.704c.427.427.427 1.12 0 1.548z"/></svg>');
+  background-size: contain;
+  background-color: var(--gray-700);
+  border: 2px solid var(--gray-700);
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="checkbox"]:checked:focus-visible {
+  border-color: var(--focus-ring-color);
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  border: 2px solid var(--gray-300);
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  align-self: center;
+  justify-content: center;
+  position: relative;
+  display: flex;
+}
+
+@media (hover: hover) {
+  input[type="radio"]:hover {
+    cursor: pointer;
+  }
+}
+
+input[type="radio"]:checked {
+  border: 2px solid var(--gray-700);
+}
+
+input[type="radio"]:focus-visible,
+input[type="radio"]:checked:focus-visible {
+  border-color: var(--focus-ring-color);
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background-color: var(--gray-700);
+  align-self: center;
+  border-radius: 50%;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+form button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  line-height: initial;
+  transition: background-color 200ms ease-in-out, border 200ms ease-in-out,
+    transform 200ms ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 2px solid #6B9080;
+  background-color: white;
+  color: #6B9080;
+  font-weight: bold;
+}
+
+@media (hover: hover) {
+  input[type="submit"]:hover,
+  input[type="reset"]:hover,
+  input[type="button"]:hover,
+  form button:hover {
+    cursor: pointer;
+    background-color: #6B9080;
+    /* border: 2px solid var(--gray-700); */
+    border: none;
+    color: white;
+  }
+
+  form button:focus {
+    outline: none;
+  }
+}
+
+/* Tables
+––––––––––––––––––––––––––––––––– */
+table {
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 1.563rem;
+  font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  margin: 0;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid var(--gray-300);
+  color: var(--gray-300);
+}
+
+td {
+  border-bottom: 2px solid var(--gray-300);
+}
+
+/* Code
+––––––––––––––––––––––––––––––––– */
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  background: var(--gray-100);
+  padding: 0 0.328rem;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 10px;
+}
+
+p > code {
+  white-space: normal;
+}
+
+pre > code {
+  line-height: 1.563em;
+  display: block;
+  padding: 1rem;
+  white-space: pre;
+  margin-bottom: 1.563rem;
+  overflow: scroll;
+}
+
+/* Forces a new-line at the end of a code block for layout purposes. */
+pre > code::after {
+  content: " ";
+}
+
+/* Blockquote
+––––––––––––––––––––––––––––––––– */
+blockquote {
+  border-left: 0.25rem solid var(--gray-100);
+  padding: 0 1rem;
+  margin-bottom: 1.563rem;
+}
+
+/* List
+––––––––––––––––––––––––––––––––– */
+ul {
+  margin: 0;
+  padding: 0 1px;
+  list-style: disc outside;
+  font-variant-numeric: tabular-nums;
+}
+
+ol {
+  list-style: decimal outside;
+}
+
+ol,
+ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 1.563rem;
+}
+
+li {
+  list-style-position: inside;
+}
+
+/* Keyboard
+––––––––––––––––––––––––––––––––– */
+kbd {
+  display: inline-block;
+  padding: 0 0.328rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-size: 0.64rem;
+  color: var(--gray-700);
+  vertical-align: middle;
+  background-color: var(--gray-100);
+  border: solid 1px var(--gray-300);
+  border-bottom: solid 2px var(--gray-500);
+  border-radius: 5px;
+}
+
+/* Abbreviation
+––––––––––––––––––––––––––––––––– */
+abbr {
+  text-decoration: none;
+  border-bottom: 2px dashed var(--gray-600);
+}
+
+.error {
+  font-size: 12px;
+  color: var(--red-600);
+  margin-top: 0.25rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+button + button {
+  margin-left: 0.5rem;
+}
+
+button.secondary,
+button[type="reset"] {
+  background-color: var(--gray-300);
+  border: 2px solid var(--gray-300);
+  color: var(--gray-900);
+}
+
+button.secondary:hover,
+button[type="reset"]:hover {
+  background-color: var(--gray-400);
+}
+
+/* custom */
+input[type="email"],
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 400px;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+label.checkbox {
+  font-weight: normal;
+}
+
+button[type="submit"] {
+  margin-top: 1rem;
+}
+
+/* Calendar rules
+––––––––––––––––––––––––––––––––– */
+
+.calendar-container {
+  display: grid;
+}
+
+@import '../../node_modules/react-calendar/dist/Calendar.css';
+
+.react-calendar__month-view__days__day {
+  color: #6B9080;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #A9C7B7;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  color: #bddfcc;
+  font-style: italic;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #bdbcbc;
+}
+
+.react-calendar {
+  margin: 0 20px 25px;
+  padding: 10px;
+  width: 25em;
+  max-width: 100%;
+  background: white;
+  border: 1px solid #A9C7B7;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.25em;
+  font-size: 1.25em;
+}
+
+abbr[title], abbr[data-original-title] {
+  text-decoration: none;
+  color: #455E53;
+}
+
+.react-calendar__tile--active {
+  background: #A4C3B2;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #A4C3B2;
+  color: white;
+  cursor: pointer;
+}
+
+.react-calendar__tile--now {
+  background: #455E53;
+  color: white;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #455E53;
+  color: white;
+  cursor: pointer;
+}
