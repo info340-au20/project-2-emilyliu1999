@@ -11,13 +11,21 @@ export function SchedulePage(props) {
 
     let dateString = date.toString().slice(0, 15);
 
-    let currentTasks = [];
+    let dateFilteredTasks = [];
     if (tasks) {
-        currentTasks = tasks.filter((task) => {
+        dateFilteredTasks = tasks.filter((task) => {
             let deadline = task.deadline.slice(0, 15);
             return deadline === dateString;
         })
     }
+
+    let currentTasks = [];
+    dateFilteredTasks.forEach((task) => {
+      // sort into current and completed lists
+      if (!task.complete) {
+        currentTasks.push(task);
+      }
+    });
 
     return (
         <div className='content'>

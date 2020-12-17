@@ -677,12 +677,6 @@ abbr {
   border-bottom: 2px dashed var(--gray-600);
 }
 
-@media (hover: hover) {
-  abbr:hover {
-    cursor: help;
-  }
-}
-
 .error {
   font-size: 12px;
   color: var(--red-600);
