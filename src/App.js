@@ -214,16 +214,22 @@ export function HomePage(props) {
     <div className='content'>
       <p><em>welcome, {user.displayName}</em></p>
       <p><em>'growth happens little by little, day by day.'</em></p>
-      <div className='key'>
-        <li><i className='fas fa-seedling' aria-label='seed'></i>= in progress</li>
-        <li><i className='fab fa-pagelines' aria-label='leaf'></i>= complete</li>
-      </div>
-
       <NavLink to='/task/new'>
         <button className='key add'>
           <li><i className='fas fa-plus-circle' aria-label='circle with plus sign'></i>Add New Task</li>
         </button>
       </ NavLink>
+
+      <div className='key'>
+        <li><i className='fas fa-seedling' aria-label='seed'></i>= in progress</li>
+        <li><i className='fab fa-pagelines' aria-label='leaf'></i>= complete</li>
+        <p><em>gentle reminders:</em></p>
+        <p>Add a new task by clicking on <em>'add new task'</em>. It will show up under 'current tasks'.</p>
+        <p>Complete a task by clicking on it. we'll cross it off for you. You'll find it under <em>'completed tasks'</em></p>
+        <p>Click on already completed tasks again to mark as current. The grind never stops!</p>
+      </div>
+
+      
 
       <TaskBox username={user.displayName} tasks={props.tasks} />
     </div>
