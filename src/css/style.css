@@ -799,3 +799,60 @@ label.checkbox {
 button[type="submit"] {
   margin-top: 1rem;
 }
+
+/* Calendar rules
+––––––––––––––––––––––––––––––––– */
+
+.calendar-container {
+  display: grid;
+}
+
+@import '../../node_modules/react-calendar/dist/Calendar.css';
+
+.react-calendar__month-view__days__day--weekend {
+  color: #6B9080;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  color: #455E53;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575;
+}
+
+.react-calendar {
+  width: 350px;
+  max-width: 100%;
+  background: white;
+  border: 1px solid #A9C7B7;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.125em;
+}
+
+abbr[title], abbr[data-original-title] {
+  text-decoration: none;
+  color: #455E53;
+}
+
+.react-calendar__tile--active {
+  background: #A4C3B2;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #A4C3B2;
+  color: white;
+}
+
+.react-calendar__tile--now {
+  background: #455E53;
+  color: white;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #455E53;
+  color: white;
+}

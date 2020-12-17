@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import TaskDetailsPage from './taskDetails.js';
-// import SchedulePage from './schedule.js';
+import {SchedulePage} from './schedule.js';
 // import InboxPage from './index.js';
 
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
@@ -194,7 +194,7 @@ export function Main(props) {
   return (
     <section>
       <div className="top-bar">
-        <button className="openbtn" onClick="ToggleNav()"><i className="fa fa-bars" aria-label="menu"></i></button>
+        <button className="openbtn" onClick={ToggleNav}><i className="fa fa-bars" aria-label="menu"></i></button>
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path="/" render={(routerProps) => (
@@ -202,6 +202,9 @@ export function Main(props) {
           )}/>
           <Route path="/task/:taskKey" render={(routerProps) => (
             <TaskDetailsPage user={user} />
+          )}/>
+          <Route path="/schedule" render={(routerProps) => (
+            <SchedulePage tasks={tasks}/>
           )}/>
           <Redirect exact to="/" />
         </Switch>
@@ -309,12 +312,6 @@ export function TaskCard(props) {
           <h2 className="mb-4">{title}</h2>
           <ul className="nav nav-tabs card-header-tabs">
             {navs}
-            {/* <li className="nav-item">
-              <a className="nav-link disabled" href="#">Upcoming</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">Completed</a>
-            </li> */}
           </ul>
       </div>
 
