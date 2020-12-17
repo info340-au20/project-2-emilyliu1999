@@ -8,7 +8,7 @@ import { TaskList } from './App.js';
 export function SchedulePage(props) {
     let tasks = props.tasks;
     const [date, onChange] = useState(new Date());
-    
+
     let dateString = date.toString().slice(0, 15);
 
     let currentTasks = [];
@@ -54,11 +54,11 @@ function CurrentTaskCard(props) {
                 </li>
               </ul>
           </div>
-    
+
           <div className={'card-body ' + date + '-list'}>
               <div className='row'>
                   <div className='col-sm'>
-                      <TaskList tasks={todayTasks} />
+                      <TaskList tasks={todayTasks} isHomePage={false}/>
                   </div>
               </div>
           </div>

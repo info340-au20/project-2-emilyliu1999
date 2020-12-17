@@ -316,11 +316,13 @@ export function TaskCard(props) {
                   <TaskList
                     username={props.username}
                     tasks={todayTasks}
+                    isHomePage={true}
                   />
                   :
                   <TaskList
                     username={props.username}
                     tasks={thisWeekTasks}
+                    isHomePage={true}
                   />)}
               </div>
           </div>
@@ -334,7 +336,7 @@ export function TaskList(props) {
   if (props.tasks !== undefined) {
     taskItems = props.tasks.map(task =>
       // pass username, task info, and task key twice (once as React key, again for querying the database)
-      <TaskItem username={props.username} name={task.name} desc={task.desc} deadline={task.deadline} key={task.key} queryKey={task.key} complete={task.complete} />
+      <TaskItem username={props.username} name={task.name} desc={task.desc} deadline={task.deadline} key={task.key} queryKey={task.key} complete={task.complete} isHomePage={props.isHomePage} />
     );
   } else {
     taskItems = undefined;
@@ -348,6 +350,8 @@ export function TaskList(props) {
 }
 
 export function TaskItem(props) {
+  const [redirectTo, setRedirectTo] = useState(undefined);
+
   let taskName = props.name;
   let queryString = props.username + '/tasks/' + props.queryKey;
 
@@ -360,7 +364,11 @@ export function TaskItem(props) {
   }
 
   const handleClick = (event) => {
-    firebase.database().ref(queryString).set({name: taskName, desc: props.desc, deadline: props.deadline, complete: !props.complete});
+    if (props.isHomePage) {
+      firebase.database().ref(queryString).set({name: taskName, desc: props.desc, deadline: props.deadline, complete: !props.complete});
+    } else {
+      setRedirectTo('/task/' + props.queryKey);
+    }
   }
 
   const handleDeleteClick = (event) => {
@@ -368,7 +376,7 @@ export function TaskItem(props) {
     firebase.database().ref(queryString).remove();
   }
 
-  return (
+  return (redirectTo ? <Redirect push to={redirectTo} /> : (
       <li className='list-group-item' onClick={handleClick}>
         <div>
           {icon}
@@ -376,7 +384,7 @@ export function TaskItem(props) {
         </div>
         <i className='fa fa-window-close' onClick={handleDeleteClick} aria-label='exit' aria-hidden='true'></i>
       </li>
-  );
+  ));
 }
 
 export default App;
