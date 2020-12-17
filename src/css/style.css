@@ -373,7 +373,7 @@ form {
   margin: auto;
 }
 
-label {
+form label {
   font-weight: bold;
   display: flex;
   font-style: italic;

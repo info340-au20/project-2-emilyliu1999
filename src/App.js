@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
 import TaskDetailsPage from './taskDetails.js';
 import {SchedulePage} from './schedule.js';
-
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
-
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 // FirebaseUI config
