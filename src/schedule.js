@@ -41,7 +41,7 @@ export function SchedulePage(props) {
 }
 
 function CurrentTaskCard(props) {
-    let date = props.date.toString().slice(4, 9);
+    let date = props.date.toString().slice(4, 10);
     let todayTasks = props.tasks;
 
     return (
