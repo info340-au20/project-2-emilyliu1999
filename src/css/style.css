@@ -184,6 +184,10 @@ button.add:focus {
   display: grid;
 }
 
+.content p {
+  margin-bottom: 30px;
+}
+
 section .container {
     margin-top: 110px;
     position: absolute;
@@ -209,6 +213,7 @@ section .container h2 {
 
 .card-header {
   background-color: #A4C3B2;
+  color: white;
 }
 
 .nav-link {
@@ -343,7 +348,7 @@ section#landing {
     width: 20%;
 }
 
-.create a {
+/* .create a {
     color: #7EA091;
     display: block;
     margin: auto;
@@ -354,9 +359,9 @@ section#landing {
 .create a:hover {
     color: #4E6A5E;
     font-size: 1.05rem;
-}
+} */
 
-.schedule, .tasks {
+/* .schedule, .tasks {
     border: 1px solid #455E53;
     width: 55%;
     margin: 10px 0;
@@ -376,9 +381,9 @@ section#landing {
     display: inline-block;
     margin-right: 30px;
     position: relative;
-}
+} */
 
-.dates ul {
+/* .dates ul {
     display: block;
     width: 100%;
     color: #A4C3B2;
@@ -399,11 +404,11 @@ section#landing {
 
 .dates a:hover {
     color: #6B9080;
-}
+} */
 
-.week ul {
+/* .week ul {
    margin-left: 50px;
-}
+} */
 
 .list-group-item:hover {
     background-color: #95B1A5;
@@ -809,25 +814,33 @@ button[type="submit"] {
 
 @import '../../node_modules/react-calendar/dist/Calendar.css';
 
-.react-calendar__month-view__days__day--weekend {
+.react-calendar__month-view__days__day {
   color: #6B9080;
 }
 
+.react-calendar__month-view__days__day--weekend {
+  color: #A9C7B7;
+}
+
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
-  color: #455E53;
+  color: #bddfcc;
+  font-style: italic;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
-  color: #757575;
+  color: #bdbcbc;
 }
 
 .react-calendar {
-  width: 350px;
+  margin: 0 25px;
+  padding: 10px;
+  width: 500px;
   max-width: 100%;
   background: white;
   border: 1px solid #A9C7B7;
   font-family: 'Noto Sans JP', sans-serif;
-  line-height: 1.125em;
+  line-height: 1.25em;
+  font-size: 20px;
 }
 
 abbr[title], abbr[data-original-title] {
@@ -844,6 +857,7 @@ abbr[title], abbr[data-original-title] {
 .react-calendar__tile--active:enabled:focus {
   background: #A4C3B2;
   color: white;
+  cursor: pointer;
 }
 
 .react-calendar__tile--now {
@@ -855,4 +869,5 @@ abbr[title], abbr[data-original-title] {
 .react-calendar__tile--now:enabled:focus {
   background: #455E53;
   color: white;
+  cursor: pointer;
 }
