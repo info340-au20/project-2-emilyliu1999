@@ -30,21 +30,21 @@ const uiConfig = {
 };
 
 export function App(props) {
+  const [isNavToggled, setIsNavToggled] = useState(false);
+
   // changed from decomposed instantiation to prevent ESLint
   // from getting angry about an unused variable
-  const [tasks, setTasks] = useState([]);
-  const [completed, setCompleted] = useState([]);
 
   // state variables for error message and current user
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // callback for updating the state for tasks
-  const handleTaskUpdate = (newTasks) => {
-    setTasks(newTasks);
+  // callback for toggling the nav
+  const handleNavToggle = () => {
+    console.log("we did it " + isNavToggled);
+    setIsNavToggled(!isNavToggled);
   };
 
-  ////////////////////
   // use effect hook to wait until the component loads
   useEffect(() => {
     const authUnregisterHandler = firebase.auth().onAuthStateChanged((firebaseUser) => {
@@ -83,15 +83,15 @@ export function App(props) {
 
         <section id="landing">
           <h1>let's get stuff done together.</h1>
-          <i class="fab fa-pagelines" aria-label="leaf"></i>
-          <i class="fab fa-pagelines" aria-label="leaf"></i>
-          <i class="fab fa-pagelines" aria-label="leaf"></i>
+          <i className="fab fa-pagelines" aria-label="leaf"></i>
+          <i className="fab fa-pagelines" aria-label="leaf"></i>
+          <i className="fab fa-pagelines" aria-label="leaf"></i>
           <p>
               flora & fauna is more than just a productivity tool– we're a way of life.
               We're here to keep you on track as you bloom towards your lofiest goals, every step of the way.
           </p>
 
-          <div class="login-page">
+          <div className="login-page">
             <h2>sign in</h2>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
           </div>
@@ -99,27 +99,29 @@ export function App(props) {
       </div>
     );
   } else {  // otherwise, show welcome page
+    let navBarContent = (isNavToggled ? <Header navUpdate={handleNavToggle} /> : null);
+
     content = (
       <div className="content">
-        <Header />
-        <Main user={user} tasks={tasks} completed={completed} taskUpdate={handleTaskUpdate}/>
+        {navBarContent}
+        <Main user={user} navUpdate={handleNavToggle}/>
       </div>
     );
   }
   return content;
 }
 
-export function Header() {
+export function Header(props) {
   return (
     <header>
       <div className="nav-bar">
-        <SideBar />
+        <SideBar navUpdate={props.navUpdate} />
       </div>
     </header>
   );
 }
 
-export function SideBar() {
+export function SideBar(props) {
   //allow user to log out
   const handleSignOut = () => {
     firebase.auth().signOut();
@@ -130,7 +132,7 @@ export function SideBar() {
       <div className="menu">
         <ul>
           {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
-          <a href="javascript:void(0)" className="closebtn" onClick={ToggleNav}>X</a>
+          <a href="#" className="closebtn" onClick={props.navUpdate}>X</a>
           <li><NavLink exact to="/" activeClassName="activeLink"><i className="fas fa-home" aria-label="home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink"><i className="far fa-calendar-alt" aria-label="schedule"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock" aria-label="lock"></i>log out</NavLink></li>
@@ -146,41 +148,24 @@ export function SideBar() {
   );
 }
 
-// toggle hamburger menu
-export function ToggleNav() {
-  const Show = () => {
-    const [sideBar, setSideBar] = useState(false)
-    const showSideBar = () => setSideBar(!sideBar);
-    
-    return (
-      <div>
-        { sideBar ? <SideBar onClick={showSideBar} /> : null }
-      </div>
-    )
-  }
-}
-
-// ReactDOM.render(<Search />, document.querySelector("#container"))
-
-
 // React component handling routing to the proper pages
 export function Main(props) {
+  const [tasks, setTasks] = useState([]);
   const user = {...props.user};
-  const tasks = [...props.tasks];
   const taskRef = firebase.database().ref(user.displayName + "/tasks");
 
   useEffect(() => {
-    let tasks = [];
+    let retrievedTasks = [];
     taskRef.on('value', (snapshot) => {
       const taskValue = snapshot.val();
-      let objectKeyArray = Object.keys(taskValue);
-      if (objectKeyArray) {
-        tasks = objectKeyArray.map((key) => {
+      if (taskValue) {
+        let objectKeyArray = Object.keys(taskValue);
+        retrievedTasks = objectKeyArray.map((key) => {
           let singleTaskObj = taskValue[key];
           singleTaskObj.key = key;
           return singleTaskObj;
         })
-        props.taskUpdate(tasks);
+        setTasks(retrievedTasks);
       }
     });
 
@@ -189,12 +174,12 @@ export function Main(props) {
     }
   }, []);
 
-
-  // <Route path="/schedule" component={SchedulePage} />
   return (
     <section>
       <div className="top-bar">
-        <button className="openbtn" onClick={ToggleNav}><i className="fa fa-bars" aria-label="menu"></i></button>
+        <button className="openbtn" onClick={props.navUpdate}>
+          <i className="fa fa-bars" aria-label="menu"></i>
+        </button>
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path="/" render={(routerProps) => (
