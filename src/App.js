@@ -40,7 +40,6 @@ export function App(props) {
 
   // callback for toggling the nav
   const handleNavToggle = () => {
-    console.log("we did it " + isNavToggled);
     setIsNavToggled(!isNavToggled);
   };
 
@@ -103,7 +102,7 @@ export function App(props) {
     content = (
       <div className="content">
         {navBarContent}
-        <Main user={user} navUpdate={handleNavToggle}/>
+        <Main user={user} navUpdate={handleNavToggle} isNavToggled={isNavToggled}/>
       </div>
     );
   }
@@ -150,6 +149,7 @@ export function SideBar(props) {
 // React component handling routing to the proper pages
 export function Main(props) {
   const [tasks, setTasks] = useState([]);
+
   const user = {...props.user};
   const taskRef = firebase.database().ref(user.displayName + "/tasks");
 
@@ -173,12 +173,25 @@ export function Main(props) {
     }
   }, []);
 
+  let divClasses = "top-bar" + (props.isNavToggled ? " menu-toggled-margin" : "");
+  let buttonContent = (props.isNavToggled ?
+    (
+      <button className="openbtn hidden-btn" onClick={props.navUpdate}>
+        <i className="fa fa-bars" aria-label="menu"></i>
+      </button>
+    )
+    :
+    (
+      <button className="openbtn" onClick={props.navUpdate}>
+        <i className="fa fa-bars" aria-label="menu"></i>
+      </button>
+    )
+  );
+
   return (
     <section>
-      <div className="top-bar">
-        <button className="openbtn" onClick={props.navUpdate}>
-          <i className="fa fa-bars" aria-label="menu"></i>
-        </button>
+      <div className={divClasses}>
+        {buttonContent}
         <h1>flora & fauna</h1>
         <Switch>
           <Route exact path='/' render={(routerProps) => (

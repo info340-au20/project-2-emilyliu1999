@@ -57,6 +57,7 @@ body {
     padding: 16px;
     border: none;
     outline: none;
+    margin-left: 0;
 }
 
 .top-bar .openbtn {
@@ -78,6 +79,14 @@ body {
 
 .top-bar .openbtn:focus {
     outline: none;
+}
+
+.menu-toggled-margin {
+  margin-left: 225px;
+}
+
+.hidden-btn {
+  opacity: 0;
 }
 
 .nav-bar .menu ul li {
@@ -141,7 +150,6 @@ body {
 .top-bar {
     width: 100vw;
     display: grid;
- /* margin-left: 220px;  */
 }
 
 .top-bar h1 {
