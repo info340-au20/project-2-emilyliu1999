@@ -427,9 +427,9 @@ textarea {
   box-sizing: border-box;
   padding: 0.65rem 0.5rem;
   margin-right: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
+  /* font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir,
     "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial,
-    sans-serif;
+    sans-serif; */
 }
 
 input:focus,

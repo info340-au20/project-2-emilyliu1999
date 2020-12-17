@@ -121,7 +121,7 @@ export function TaskDetailsPage(props) {
         <DatePickerField name='deadline' />
         <ErrorMessage name='deadline' />
 
-        <label htmlFor='complete'>Complete?</label>
+        <label htmlFor='complete'>Is this task completed?</label>
         <Field name='complete' type='checkbox' />
         <ErrorMessage name='complete' />
 
