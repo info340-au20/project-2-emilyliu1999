@@ -127,7 +127,7 @@ export function SideBar(props) {
       <div className='menu'>
         <ul>
           {/* <li><i className="fa fa-bars" aria-label="menu" onClick="show()"></i></li> */}
-          <a href="#" className="closebtn" onClick={props.navUpdate}>X</a>
+          <a href="/#" className="closebtn" onClick={props.navUpdate}>X</a>
           <li><NavLink exact to="/" activeClassName="activeLink" onClick={props.navUpdate}><i className="fas fa-home" aria-label="home"></i>home</NavLink></li>
           <li><NavLink to="/schedule" activeClassName="activeLink" onClick={props.navUpdate}><i className="far fa-calendar-alt" aria-label="schedule"></i>schedule</NavLink></li>
           <li onClick={handleSignOut}><NavLink exact to="/"><i className="fas fa-lock" aria-label="lock"></i>log out</NavLink></li>
@@ -168,7 +168,7 @@ export function Main(props) {
     return function cleanup() {
       taskRef.off();
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   let divClasses = "top-bar" + (props.isNavToggled ? " menu-toggled-margin" : "");
   let buttonContent = (props.isNavToggled ?
