@@ -137,9 +137,9 @@ export function SideBar() {
 
       </div>
       <div className='social-media'>
-        <li><a href='#'><i className='fab fa-facebook-f' aria-label='facebook' aria-hidden='true'></i></a></li>
-        <li><a href='#'><i className='fab fa-instagram' aria-label='instagram' aria-hidden='true'></i></a></li>
-        <li><a href='#'><i className='fab fa-twitter' aria-label='twitter' aria-hidden='true'></i></a></li>
+        <li><a href='/#'><i className='fab fa-facebook-f' aria-label='facebook' aria-hidden='true'></i></a></li>
+        <li><a href='/#'><i className='fab fa-instagram' aria-label='instagram' aria-hidden='true'></i></a></li>
+        <li><a href='/#'><i className='fab fa-twitter' aria-label='twitter' aria-hidden='true'></i></a></li>
       </div>
     </div>
   );
@@ -158,9 +158,6 @@ export function ToggleNav() {
     )
   }
 }
-
-// ReactDOM.render(<Search />, document.querySelector('#container'))
-
 
 // React component handling routing to the proper pages
 export function Main(props) {
@@ -281,8 +278,8 @@ export function TaskCard(props) {
 
   navs = (
     <li className='nav-item'>
-      <a className={'nav-link' + (isToday ? ' active' : '')} onClick={toggleIsToday} href='#'>{'today'}</a>
-      <a className={'nav-link' + (!isToday ? ' active' : '')} onClick={toggleIsToday} href='#'>{'this week'}</a>
+      <a className={'nav-link' + (isToday ? ' active' : '')} onClick={toggleIsToday} href='/#'>{'today'}</a>
+      <a className={'nav-link' + (!isToday ? ' active' : '')} onClick={toggleIsToday} href='/#'>{'this week'}</a>
     </li>
   );
 
