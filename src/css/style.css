@@ -5,6 +5,7 @@
     list-style: none;
     box-sizing: border-box;
     text-transform: lowercase;
+    cursor: pointer;
 }
 
 body {
@@ -204,7 +205,7 @@ section .container {
     margin-left: 300px;
 }
 
-section .container .fas, section .container .fab {
+section .list-group-item .fas, section .list-group-item .fab {
     font-size: 25px;
     color: #CCE3DE;
     margin-right: 10px;

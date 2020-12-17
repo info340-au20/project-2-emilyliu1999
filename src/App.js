@@ -72,7 +72,7 @@ export function App(props) {
   if(!user) { // if no user has successfully logged in, show landing/login page
     content = (
       <div>
-        <div class='landing'>
+        <div className='landing'>
             <h1>flora & fauna</h1>
         </div>
 
